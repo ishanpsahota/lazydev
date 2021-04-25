@@ -1,0 +1,138 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+:root {
+  font-size: 16px;
+}
+
+.gradient {
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+:root {
+  font-family: "Nunito", sans-serif;
+}
+
+html, body {
+  font-family: "Nunito", sans-serif;
+}
+
+.text-500 {
+  font-weight: 500;
+}
+
+.text-600 {
+  font-weight: 600;
+}
+
+.text-700 {
+  font-weight: 700;
+}
+
+.text-800 {
+  font-weight: 800;
+}
+
+.text-red {
+  color: #660000;
+}
+
+.text-light {
+  color: #f7f7f9;
+}
+
+.text-dark {
+  color: dark;
+}
+
+.text-dark-md {
+  color: #0d1f2d;
+}
+
+.text-black {
+  color: #000;
+}
+
+.text-danger {
+  color: #8c001a;
+}
+
+.text-warning {
+  color: #f7e733;
+}
+
+.text-primary {
+  color: #e86a92;
+}
+
+.text-blue {
+  color: #3f84e5;
+}
+
+.text-accent {
+  color: #006494;
+}
+
+.text-blue-md {
+  color: #233d4d;
+}
+
+.text-purple {
+  color: #6247aa;
+}
+
+.text-secondary {
+  color: #9ea3b0;
+}
+
+.text-info {
+  color: #41e2ba;
+}
+
+.text-transparent {
+  color: transparent;
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+}
+
+.text-sm {
+  font-size: 1.75rem;
+}
+
+.text-md {
+  font-size: 2rem;
+}
+
+.text-lg {
+  font-size: 4rem;
+}
+
+.text-xl {
+  font-size: 12rem;
+}
+
+.text-hero {
+  font-size: 14rem;
+  letter-spacing: 0.02em;
+}
+
+a {
+  color: #cfcfcf;
+  transition: color 0.15s ease;
+}
+a.nav-link {
+  font-weight: 600;
+}
+a .nav-link:hover {
+  color: #C850C0;
+  transform: scale(1.1);
+  transition: all 0.15s ease-in-out;
+}

@@ -1,0 +1,56 @@
+@import 'variables';
+    
+.form {
+
+    &-group {
+        margin: auto;
+    }
+
+    &-wrapper {
+        border: 0.15px solid $blue-md;
+        border-radius: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5px 15px;
+        align-items: baseline;
+    }
+
+    &-input {
+
+        width: 90%;
+        margin-right: 10px;
+
+        input[type="text"] {
+
+            background: transparent;            
+            border: none;
+            outline: none;
+            padding: 2px 4px;
+
+            &:focus {
+
+                color: $primary;
+                outline: none !important;
+                border: none;                                
+
+            }                        
+        }
+
+        
+    }
+
+    &-icon {
+
+        &-wrapper {
+            width: 10%;        
+
+        }
+
+        &-inner {
+            color: $secondary;
+            font-weight: 600;
+        }
+    }
+
+}

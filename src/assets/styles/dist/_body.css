@@ -1,0 +1,21 @@
+:root {
+  font-size: 16px;
+}
+
+.gradient {
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+html[data-theme=dark] {
+  color: #cfcfcf;
+  background-color: #020c12;
+}
+html[data-theme=dark] .row, html[data-theme=dark] p, html[data-theme=dark] div, html[data-theme=dark] section {
+  background: #020c12;
+  color: #cfcfcf !important;
+}
+
+.container-fluid {
+  padding: 0;
+}

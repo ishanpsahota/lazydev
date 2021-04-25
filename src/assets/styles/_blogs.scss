@@ -1,0 +1,96 @@
+@import 'variables';
+
+.blog {
+
+    &-collection-wrapper {
+        // display: flex;
+        // flex-direction: row;
+    }
+
+    &-item {
+        
+        &-wrapper {
+            margin: 5px;
+            border-radius: 10px;
+            position: relative;
+            padding: 0;
+            box-shadow: none;
+            overflow: hidden;       
+            max-height: 30vh;   
+            // width: auto;    
+            box-shadow: 5px 5px 10px 0px #000;                
+
+                
+
+            // &:hover {
+            //     // box-shadow: 5px 5px 10px 0px #000;                
+
+            //     .blog-item-text-wrapper {
+            //         display: block;
+            //         transition: display 0.35s ease;
+            //     }
+
+            // }
+
+            transition: box-shadow 0.25s ease;
+        }
+
+        &-img {
+            
+            // margin: auto;
+            min-height: 100%;
+            height: auto;
+            width: 100%;
+            display: flex;            
+
+            img {
+                // max-height: 150%;
+                max-width: 150%;
+                height: 110%;
+                width: auto;
+                margin: auto;
+                min-width: 110%;
+                
+            }
+            
+        }
+
+        // &-glass-box {
+        //     min-height: 100%;
+        //     width: 100%;
+        //     display: flex;
+        // }
+
+        &-text {
+            // margin-top: -100%;
+            // margin-left: 3%;
+
+            // &-wrapper {
+            //     display: none;
+            //     transition: display 0.35s ease;
+            // }
+
+            top: 0%;
+            // left: 5%;            
+            background-color: rgba(0, 0, 0, 0.4) !important;
+            height: 100%;
+            min-width: 100%;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+
+            a.blog-visit {
+                margin: auto;
+                &:hover {
+                    color: $light;
+                    text-decoration: none;
+                }
+            }
+
+            .badge {
+                margin: 0 auto;
+            }
+        }
+    }
+}

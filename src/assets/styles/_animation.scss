@@ -1,0 +1,61 @@
+.animation {
+
+    &-rotate {
+        animation: rotate 7.5s  ease-in-out infinite;
+    }
+
+    &-top-right {
+        animation: top-right 7.5s ease-in-out infinite;
+    }
+
+    &-bottom-left {
+        animation: bottom-left 7.5s ease-in-out infinite;
+    }
+
+}
+
+@keyframes rotate {
+
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360);
+    }
+    
+}
+
+@keyframes top-right {
+    0% {
+        top: -90%;
+        right: -70%;
+    }
+
+    50% {
+        top: -80%;
+        right: -60%;
+    }
+
+    100% {
+        top: -90%;
+        right: -70%;
+    }
+}
+
+@keyframes bottom-left {
+    0% {
+        bottom: -75%;
+        left: -75%;
+    }
+
+    50% {
+        bottom: -60%;
+        left: -60%;
+    }
+
+    100% {
+        bottom: -75%;
+        left: -75%;
+    }
+}

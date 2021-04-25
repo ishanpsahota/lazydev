@@ -1,0 +1,80 @@
+:root {
+  font-size: 16px;
+}
+
+.gradient {
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+.bg-dark {
+  background-color: #2b2d42;
+}
+
+.bg-dark-md {
+  background-color: #0d1f2d;
+}
+
+.bg-danger {
+  background-color: #8c001a;
+}
+
+.bg-info {
+  background-color: #41e2ba;
+}
+
+.bg-light {
+  background-color: #f7f7f9;
+}
+
+.bg-primary {
+  background-color: #e86a92;
+}
+
+.bg-accent {
+  background-color: #006494;
+}
+
+.bg-blue {
+  background-color: #3f84e5;
+}
+
+.bg-blue-md {
+  background-color: #233d4d;
+}
+
+.bg-black {
+  background-color: #121212;
+}
+
+.bg-black-light {
+  background-color: #202124;
+}
+
+.bg-pitch-black {
+  background-color: #000;
+}
+
+.bg-purple {
+  background-color: #6247aa;
+}
+
+.bg-red {
+  background-color: #660000;
+}
+
+.bg-right {
+  right: -70%;
+}
+
+.bg-top {
+  top: -90%;
+}
+
+.bg-left {
+  left: -75%;
+}
+
+.bg-bottom {
+  bottom: -75%;
+}

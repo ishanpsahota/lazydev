@@ -1,0 +1,21 @@
+@import 'variables';
+
+html[data-theme="dark"] {
+
+    color: $grey;
+    background-color: $black-secondary;
+
+    .row, p, div, section {
+        background: $black-secondary;
+        color: $grey !important;  
+    }
+
+}
+
+.container-fluid {
+    // background: none;
+    // background-color: transparent;
+    padding: 0;
+    // margin: 0;
+}
+

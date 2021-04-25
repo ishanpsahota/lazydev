@@ -1,0 +1,104 @@
+:root {
+  font-size: 16px;
+}
+
+.gradient {
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+@media screen and (max-width: 600px) {
+  .blog-item-wrapper {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 767px) {
+  .blog-item-wrapper {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .blog-item-wrapper {
+    width: 48%;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .blog-item-wrapper {
+    width: 30%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .blog-item-wrapper {
+    width: 24%;
+  }
+}
+.nav-item {
+  margin: auto 10px;
+  align-items: baseline;
+}
+
+.clickable {
+  cursor: pointer;
+  font-weight: 600;
+  color: #9ea3b0;
+  transition: color 0.15s ease;
+}
+.clickable:hover {
+  color: #e86a92;
+  transform: scale(1.1);
+  transition: all 0.15s ease;
+}
+
+.border-sm {
+  border-width: 0.1px !important;
+}
+.border-secondary {
+  border-color: #9ea3b0;
+}
+.border-blue-md {
+  border-color: #233d4d !important;
+}
+.border-black-light {
+  border-color: #202124 !important;
+}
+
+.badge-suggestions {
+  font-size: 110%;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.badge-primary {
+  background-color: #e86a92 !important;
+}
+.badge-secondary {
+  background-color: #9ea3b0 !important;
+  color: #121212 !important;
+}
+.badge-blue {
+  background-color: #3f84e5 !important;
+}
+.badge-danger {
+  background-color: #8c001a !important;
+}
+.badge-accent {
+  background-color: #006494 !important;
+}
+.badge-blue-md {
+  background-color: #233d4d !important;
+}
+.badge-purple {
+  background-color: #6247aa !important;
+}
+.badge-warning {
+  background-color: #f7e733 !important;
+  color: #000 !important;
+}
+.badge-info {
+  background-color: #41e2ba !important;
+  color: #000 !important;
+}
+.badge a:hover {
+  color: #f7f7f9;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}

@@ -1,0 +1,145 @@
+@import 'variables';
+
+@media screen and (max-width: 600px) {
+
+    .blog-item-wrapper {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width: 600px) and (max-width: 767px) {
+    
+    .blog-item-wrapper {
+        width: 100%;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    
+    .blog-item-wrapper {
+        width: 48%;
+    }
+
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    
+    .blog-item-wrapper {
+        width: 30%;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+    
+    .blog-item-wrapper {
+        width: 24%;
+    }
+
+}
+
+.nav-item {
+    margin: auto 10px;
+    align-items: baseline;
+}
+
+.clickable {
+    cursor: pointer;
+    font-weight: 600;
+    color: $secondary;
+
+    &:hover {
+        color: $primary;
+        transform: scale(1.1);
+        transition: all 0.15s ease;
+    }
+
+    transition: color 0.15s ease;
+}
+
+
+.border {
+
+    &-sm {
+        border-width: 0.1px !important;
+    }
+
+    &-secondary {
+        border-color: $secondary;
+
+    }
+
+    &-blue-md {
+        border-color: $blue-md !important;
+    }
+
+    &-black-light {
+        border-color: $black-light !important;
+    }
+}
+
+.badge {
+
+    
+    &-suggestions {
+        font-size: 110% ; 
+        border: 1px solid rgba( 255, 255, 255, 0.18 );border: 1px solid rgba( 255, 255, 255, 0.18 );
+    }
+
+    &-primary {
+
+        background-color: $primary !important;
+    }
+
+    &-secondary {
+        background-color: $secondary !important;
+        color: $black !important;
+    }
+
+    &-blue {
+        background-color: $blue !important;
+    }
+
+    &-danger {
+        background-color: $danger !important;
+    }
+
+    &-accent {
+
+        background-color: $accent !important;
+    }
+
+    &-blue-md {
+        background-color: $blue-md !important;
+    }
+
+    &-purple {
+        background-color: $purple !important;
+    }
+
+    &-warning {
+        background-color: $warning !important;
+        color: #000 !important;
+    }
+
+    &-info {
+        background-color: $info !important;
+        color: #000 !important;
+    }
+    
+
+    a:hover {
+        color: $light;        
+        text-decoration: none;
+        transition: all 0.15s ease;
+    }
+
+}
+
+// .suggestion {
+//     &-pill {
+
+//     }
+// }
