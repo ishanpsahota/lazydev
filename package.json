@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",    
+    "serve": "vue-cli-service serve",
     "build-fe": "vue-cli-service build",
     "start": "cd server && node start.js"
   },
@@ -17,6 +17,7 @@
     "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "dotenv": "^9.0.0",
+    "express": "^4.17.1",
     "expressjs": "^1.0.1",
     "helmet": "^4.6.0",
     "mongoose": "^5.12.7",
