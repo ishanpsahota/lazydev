@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "vue-cli-service serve",    
+    "build-fe": "vue-cli-service build",
+    "start": "cd server && node start.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
