@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 // const url = 'http://localhost:8081/api/v1'
-const url = 'https://lazydevapi.com/api/v1'
+const url = 'https://lazydevapi.herokuapp.com/api/v1'
 
 const links = {
     getBlogs: url + '/blogs',

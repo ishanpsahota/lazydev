@@ -8,7 +8,7 @@ exports["default"] = void 0;
 var axios = require('axios'); // const url = 'http://localhost:8081/api/v1'
 
 
-var url = 'https://lazydevapi.com/api/v1';
+var url = 'https://lazydevapi.herokuapp.com/api/v1';
 var links = {
   getBlogs: url + '/blogs',
   getSingleBlog: url + '/blogs/',
@@ -23,7 +23,7 @@ var _default = {
   getBlogs: function getBlogs() {
     var _this = this;
 
-    return new Promise(function (resolve, rejet) {
+    return new Promise(function (resolve, reject) {
       axios.get(_this.getLinks().getBlogs).then(function (res) {
         resolve(res);
       })["catch"](function (err) {
