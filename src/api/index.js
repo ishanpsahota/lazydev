@@ -19,7 +19,7 @@ export default {
 
     getBlogs() {
 
-        return new Promise((resolve, rejet) => {
+        return new Promise((resolve, reject) => {
             
             axios.get(this.getLinks().getBlogs)
             .then(res => {
