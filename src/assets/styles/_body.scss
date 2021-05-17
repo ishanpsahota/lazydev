@@ -2,14 +2,46 @@
 
 html[data-theme="dark"] {
 
-    color: $grey;
-    background-color: $black-secondary;
+    scroll-behavior: smooth;
+    // color: $grey;
+    background-color: $black-secondary !important;
 
-    .row, p, div, section {
+    // * {
+    //     background-color: $black-secondary;
+    //     color: $grey !important;
+    // }
+
+    div, section {
         background: $black-secondary;
-        color: $grey !important;  
+        color: $grey;  
     }
 
+    p {
+        // color: $light;
+        background: transparent;
+    }
+
+}
+
+html {
+    // font-size: 16px !important;
+    &::-webkit-scrollbar {
+        width: 1rem;
+        margin: 1rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $black;
+        border-radius: 10px;        
+    }
+
+    &::-webkit-scrollbar-thumb {
+        // background: #FFFFFF;
+        background: $scroll-track-color;
+        box-shadow: $shadow-scroll;
+        border-radius: 50px;
+        width: 0.5rem;
+    }
 }
 
 .container-fluid {

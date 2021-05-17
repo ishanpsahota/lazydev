@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "rest api",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node start.js",
+    "start-be": "nodemon start.js"
+  },
+  "keywords": [
+    "express",
+    "rest",
+    "api",
+    "crud"
+  ],
+  "author": "Ishan Prasad",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.7"
+  }
+}

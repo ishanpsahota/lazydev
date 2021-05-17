@@ -1,4 +1,4 @@
-# resume-web
+# lazydev
 
 ## Project setup
 ```

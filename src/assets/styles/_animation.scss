@@ -1,3 +1,5 @@
+@import 'variables';
+
 .animation {
 
     &-rotate {
@@ -26,36 +28,88 @@
     
 }
 
+// @keyframes top-right {
+//     0% {
+//         top: -40%;
+//         right: -30%;
+//     }
+
+//     50% {
+//         top: -35%;
+//         right: -25%;
+//     }
+
+//     100% {
+//         top: -40%;
+//         right: -30%;
+//     }
+// }
+
 @keyframes top-right {
     0% {
-        top: -90%;
-        right: -70%;
+        top: -100%;
+        right: -75%;
     }
 
     50% {
-        top: -80%;
-        right: -60%;
+        top: -85%;
+        right: -70%;
     }
 
     100% {
-        top: -90%;
-        right: -70%;
+        top: -100%;
+        right: -75%;
     }
 }
 
+// @keyframes bottom-left {
+//     0% {
+//         bottom: -40%;
+//         left: -30%;
+//     }
+
+//     50% {
+//         bottom: -35%;
+//         left: -25%;
+//     }
+
+//     100% {
+//         bottom: -40%;
+//         left: -30%;
+//     }
+// }
+
 @keyframes bottom-left {
     0% {
-        bottom: -75%;
+        bottom: -100%;
         left: -75%;
     }
 
     50% {
-        bottom: -60%;
-        left: -60%;
+        bottom: -80%;
+        left: -70%;
     }
 
     100% {
-        bottom: -75%;
+        bottom: -100%;
         left: -75%;
     }
+}
+
+@keyframes changeBg {
+    
+    0% {
+        background-color: $black-secondary;
+    }
+
+    50% {
+        background-color: $dark;
+        box-shadow: 5px 5px 10px 0px #000;                
+    }   
+
+    100% {
+        background-color: $black-secondary;
+        box-shadow: none;
+    }
+    
 }

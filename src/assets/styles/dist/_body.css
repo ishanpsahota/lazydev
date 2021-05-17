@@ -8,12 +8,30 @@
 }
 
 html[data-theme=dark] {
-  color: #cfcfcf;
-  background-color: #020c12;
+  scroll-behavior: smooth;
+  background-color: #020c12 !important;
 }
-html[data-theme=dark] .row, html[data-theme=dark] p, html[data-theme=dark] div, html[data-theme=dark] section {
+html[data-theme=dark] div, html[data-theme=dark] section {
   background: #020c12;
-  color: #cfcfcf !important;
+  color: #cfcfcf;
+}
+html[data-theme=dark] p {
+  background: transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 1rem;
+  margin: 1rem;
+}
+html::-webkit-scrollbar-track {
+  background: #121212;
+  border-radius: 10px;
+}
+html::-webkit-scrollbar-thumb {
+  background: #2b2d42;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  width: 0.5rem;
 }
 
 .container-fluid {

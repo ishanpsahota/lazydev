@@ -78,3 +78,13 @@
 .bg-bottom {
   bottom: -75%;
 }
+
+.bg-top-right {
+  top: -90%;
+  right: -25%;
+}
+
+.bg-bottom-left {
+  bottom: -90%;
+  left: -25%;
+}

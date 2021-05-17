@@ -1,33 +1,31 @@
 <template>
-  <div class="glass glass-wrapper">
-      <img src="../../assets/glass/Ellipse02.png" :class="'glass-bg bg-top bg-right animation-rotate animation-top-right'"  />
-      <img src="../../assets/glass/Ellipse04.png" :class="'glass-bg bg-left bg-bottom animation-rotate animation-bottom-left'" />
+  <div :class="['glass', 'glass-wrapper', size == 'sm' ? 'glass-wrapper-sm' : 'glass-wrapper' ]">
+      <img src="../../assets/glass/Ellipse02.png" :class="['glass-bg', size == 'sm' ? 'glass-bg-sm' : 'glass-bg-md',  animation ? ' animation-top-right animation-rotate ' : '', containerItem ? ' bg-right bg-top ' : ' bg-top-right ' ]"   />
+      <img src="../../assets/glass/Ellipse04.png" :class="['glass-bg', size == 'sm' ? 'glass-bg-sm' : 'glass-bg-md',  animation ? ' animation-bottom-left animation-rotate ' : '', containerItem ? ' bg-left bg-bottom ' : ' bg-bottom-left ' ]" />
       <div class="glass-inner">
-        <div class="blog-item-text">
-              <router-link class="blog-visit" :to="'/blog/' + url">
-                <h4>
-                  <strong> {{title}} </strong>
-                </h4>
-              </router-link>
-              <span class="badge badge-accent"> 
-                <router-link :to="'/blogs/c/' + category">
-                  {{category}}
-                </router-link>
-              </span>
-            </div>
+          <blog-item :category="category" :containerItem="ifBlogContainerItem" :image="null" :title="title" :wrapperColor="ifBlogContainerItem ? 'dark' : null" />
       </div>
   </div>
 </template>
 
 <script>
+import BlogItem from '../blog-item-content/BlogItem.vue'
+
 
 
 export default {
     name: 'GlassItem',
-    props: {
-        url: String,
+    components: {
+      
+        BlogItem
+    },
+    props: {        
         title: String,
-        category: String
+        category: String,
+        animation: Boolean,
+        containerItem: Boolean,        
+        ifBlogContainerItem: Boolean,
+        size: String
     },
     data() {
         return {

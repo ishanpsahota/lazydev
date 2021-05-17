@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // import Home from '../views/Home.vue'
 import Home from '../views/home/Home.vue'
+import Blogs from '../views/blogs/Blogs.vue'
 
 Vue.use(VueRouter)
 
@@ -12,14 +13,19 @@ const routes = [
     component: Home
   },
   {
-    path: '/blogs',
-    name: 'Blogs',
+    path: '/blogs',    
+    component: Blogs,
     children: [
       {
-        path: '/v/:id',
-        name: 'ViewBlog',
-
-      }
+        path: '',
+        name: 'all',
+        component: () => import('../components/blogs-component/blogs-all/BlogsAll.vue')
+      },
+      {
+        path: 'v/:title',
+        // name: 'ViewBlog',
+        component: () => import('../components/blogs-component/blog-view/BlogView.vue')
+      },
     ]
   }
   // {

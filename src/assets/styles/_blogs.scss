@@ -2,6 +2,41 @@
 
 .blog {
 
+    &-img{
+
+        height: 100%;
+        margin: auto;
+        border-radius: 10px;
+        width: auto;        
+        // max-width: 100%;
+        
+        &-wrapper {
+            border-radius: 10px;
+            margin: auto;
+            // width: 75%;
+            display: flex;
+            overflow: hidden;
+        }
+
+        &-sm {
+            height: 20vh;
+        }
+
+        &-md {
+            height: 30vh;
+        }
+        
+        &-lg {
+            height: 40vh;
+
+            
+        }
+
+        &-xl {
+            height: 50vh;
+        }
+    }
+
     &-collection-wrapper {
         // display: flex;
         // flex-direction: row;
@@ -16,9 +51,9 @@
             padding: 0;
             box-shadow: none;
             overflow: hidden;       
-            max-height: 30vh;   
+            max-height: 25vh;   
             // width: auto;    
-            box-shadow: 5px 5px 10px 0px #000;                
+            box-shadow: $shadow;                
 
                 
 
@@ -72,7 +107,7 @@
 
             top: 0%;
             // left: 5%;            
-            background-color: rgba(0, 0, 0, 0.4) !important;
+            // background-color: rgba(0, 0, 0, 0.5) !important;
             height: 100%;
             min-width: 100%;
             position: absolute;
@@ -84,7 +119,7 @@
                 margin: auto;
                 &:hover {
                     color: $light;
-                    text-decoration: none;
+                    text-decoration: none;                    
                 }
             }
 
@@ -93,4 +128,117 @@
             }
         }
     }
+
+    &-view {
+
+        &-hero {
+
+            &-wrapper {
+                height: 35vh;
+                width: 100%;
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;         
+                padding: 10px;       
+            }
+
+            &-text-wrapper {
+
+                position: absolute;
+                height: 100%;                                
+                min-width: 100%;
+                top: 0;
+                // background-color: rgba(0, 0, 0, 0.45) !important;
+                // background-color: #fff;
+                // background-color: rgba(150, 150, 150, 0.1) !important;
+                // background: transparent;
+                display: flex;
+                flex-direction: column;      
+                
+
+            }
+
+            &-img-wrapper {
+
+                // position: relative;                
+                height: 100%;
+                // margin: auto;
+                overflow: hidden;
+                // display: flex;
+                // background-attachment: fixed;
+
+                img {
+                    // max-width: 100%;
+                    height: auto;
+                    // max-height: 100%;                    
+                    // transform: translateY(-50%);
+                    margin: 0 auto;
+                    width: 100%;
+                }
+            }
+
+        }
+
+        &-index {
+
+        }
+
+        &-content {
+
+            &-wrapper {
+                // color: $grey !important;
+                padding: 1rem;
+
+                p, h2 {
+                    color: $light !important;
+                }
+            }
+            
+        }
+
+        &-ad {
+
+        }
+
+    }
+
+    &-carousel {
+        
+    }
+}
+
+.block-wrapper {
+
+    margin: 1rem auto 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+
+}
+
+.text-wrapper {
+
+    // position: absolute;
+    // height: 100%;                                
+    // min-width: 100%;
+    // top: 0;    
+    // display: flex;
+    // flex-direction: column;   
+
+    // a.blog-visit {
+    //     margin: auto;
+    //     &:hover {
+    //         color: $light;
+    //         text-decoration: none;                    
+    //     }
+    // }
+
+    &-light {
+        background-color: rgba(207, 207, 207, 0.1) !important;
+    }
+
+    &-dark {
+        background-color: rgba(0, 0, 0, 0.45) !important;
+
+    }
+
 }

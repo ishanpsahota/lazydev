@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
 :root {
   font-size: 16px;
 }
@@ -9,11 +10,15 @@
 }
 
 :root {
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 html, body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+a, strong, h1, h2, h3, h4, h5, h6 {
+  background-color: transparent !important;
 }
 
 .text-500 {
@@ -65,11 +70,11 @@ html, body {
 }
 
 .text-blue {
-  color: #3f84e5;
+  color: #3f84e5 !important;
 }
 
 .text-accent {
-  color: #006494;
+  color: #006494 !important;
 }
 
 .text-blue-md {
@@ -101,6 +106,18 @@ html, body {
 
 .text-xs {
   font-size: 0.75rem;
+}
+
+.text-sm-sm {
+  font-size: 1.15rem;
+}
+
+.text-sm-md {
+  font-size: 1.25rem;
+}
+
+.text-sm-l {
+  font-size: 1.5rem;
 }
 
 .text-sm {

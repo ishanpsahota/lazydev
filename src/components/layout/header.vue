@@ -1,5 +1,5 @@
 <template>
-    <div class="header py-1">
+    <div class="header py-1 ">
         <nav class="navbar navbar-expand-sm border-sm border-bottom border-black-light">
             <!-- <a class="navbar-brand text-gradient text-sm text-800" href="/"> laazzzyyyy.dev </a> -->
             <router-link to="/" class="navbar-brand text-gradient text-sm text-800"> laazzzyyyy.dev </router-link>
@@ -51,8 +51,7 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                 </form> -->
             </div>
-        </nav>     
-        
+        </nav>             
     </div>
 </template>
 
