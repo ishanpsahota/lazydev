@@ -9,14 +9,11 @@
 
 html[data-theme=dark] {
   scroll-behavior: smooth;
-  background-color: #020c12 !important;
+  background-color: #121212 !important;
 }
-html[data-theme=dark] div, html[data-theme=dark] section {
-  background: #020c12;
+html[data-theme=dark] body {
+  background-color: transparent;
   color: #cfcfcf;
-}
-html[data-theme=dark] p {
-  background: transparent;
 }
 
 html::-webkit-scrollbar {

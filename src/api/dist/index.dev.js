@@ -14,7 +14,11 @@ var links = {
   getSingleBlog: url + '/blogs/',
   saveBlog: url + '/blogs/save/',
   saveBlock: url + '/blogs/save/',
-  showHideBlog: url + '/blogs/status/change/'
+  showHideBlog: url + '/blogs/status/change/',
+  getCategories: url + '/blogs/get/categories',
+  getSimilarBlogs: url + '/blogs/get/similar',
+  getTrendingBlogs: url + '/blogs/get/trending',
+  search: url + '/blogs/get/search'
 };
 var _default = {
   getLinks: function getLinks() {
@@ -58,6 +62,66 @@ var _default = {
 
     return new Promise(function (resolve, reject) {
       axios.put(_this4.getLinks().saveBlog + title + '/block/' + blockId).then(function (res) {
+        resolve(res.data);
+      })["catch"](function (err) {
+        reject(err);
+      });
+    });
+  },
+  getCategories: function getCategories() {
+    var _this5 = this;
+
+    return new Promise(function (resolve, reject) {
+      axios.get(_this5.getLinks().getCategories).then(function (res) {
+        resolve(res.data);
+      })["catch"](function (err) {
+        reject(err);
+      });
+    });
+  },
+  getSimilarBlogs: function getSimilarBlogs(phrase, match) {
+    var _this6 = this;
+
+    return new Promise(function (resolve, reject) {
+      axios.get(_this6.getLinks().getSimilarBlogs + "?phrase=".concat(phrase, "&match=").concat(match)).then(function (res) {
+        resolve(res.data);
+      })["catch"](function (err) {
+        reject(err);
+      });
+    });
+  },
+  getTrendingBlogs: function getTrendingBlogs(category) {
+    var _this7 = this;
+
+    if (category) {
+      return new Promise(function (resolve, reject) {
+        axios.get(_this7.getLinks().getTrendingBlogs + "?category=".concat(phrase)).then(function (res) {
+          resolve(res.data);
+        })["catch"](function (err) {
+          reject(err);
+        });
+      });
+    } else return new Promise(function (resolve, reject) {
+      axios.get(_this7.getLinks().getTrendingBlogs).then(function (res) {
+        resolve(res.data);
+      })["catch"](function (err) {
+        reject(err);
+      });
+    });
+  },
+  search: function search(query) {
+    var _this8 = this;
+
+    if (query) {
+      return new Promise(function (resolve, reject) {
+        axios.get(_this8.getLinks().search + "?query=".concat(query)).then(function (res) {
+          resolve(res.data);
+        })["catch"](function (err) {
+          reject(err);
+        });
+      });
+    } else return new Promise(function (resolve, reject) {
+      axios.get(_this8.getLinks().search).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);

@@ -19,6 +19,11 @@
                         <!-- </router-link> -->
                     <!-- </li> -->
                     <li class="nav-item">
+                        <router-link to="/blogs/create" class="nav-link"> 
+                            <b-icon-pencil-square />                            
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" target="_blank"  href="https://ishanpsahota.netlify.app">
                             <b-icon-person />
 
@@ -57,7 +62,7 @@
 
 <script>
 
-import { BIconGrid, BIconGridFill, BIconSearch, BIconPerson } from 'bootstrap-vue'
+import { BIconGrid, BIconGridFill, BIconSearch, BIconPerson, BIconPencilSquare } from 'bootstrap-vue'
 
 export default {
     name: 'Header',
@@ -65,7 +70,8 @@ export default {
         BIconGrid,
         BIconGridFill,
         BIconSearch,
-        BIconPerson
+        BIconPerson,
+        BIconPencilSquare
     },
 
     data() {

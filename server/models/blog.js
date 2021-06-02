@@ -12,10 +12,7 @@ const blogSchema = new mongoose.Schema({
         type: String
     },
 
-    author: {
-        authorId: mongoose.Types.ObjectId,
-        authorName: String
-    },
+    author: String,
 
     date: {
         type: Date,
@@ -42,7 +39,10 @@ const blogSchema = new mongoose.Schema({
             tip: String,
             text: String,
             imageSize: String,
-            saved: Boolean,
+            saved: {
+                type: Boolean,
+                default: false
+            },
             image: String
         }
     ],

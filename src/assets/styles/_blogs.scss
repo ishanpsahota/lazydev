@@ -1,5 +1,43 @@
 @import 'variables';
 
+.blogs {
+
+    &-item {
+
+        &-wrapper {
+            display: flex;
+            border-radius: 10px;
+            margin: 0.35rem;
+            overflow: hidden;    
+            box-shadow: 0 8px 32px 0 rgba( 11, 11, 11, 0.37 );
+            // min-height: 20vh;
+        }
+
+        &-container {
+            width: 100%;
+            margin: 0.5rem 0;
+            justify-content: center;
+        }
+    }
+
+    &-img {                
+
+        &-wrapper {
+            // position: relative;
+            // background-attachment: fixed;
+            // background-size: contain;
+            background-attachment: scroll;
+            background-size: 100% auto;
+            background-position: center;
+            padding: 2rem;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            background-repeat: no-repeat;            
+        }      
+    }
+}
+
 .blog {
 
     &-img{
@@ -204,6 +242,14 @@
 
     &-carousel {
         
+    }
+
+    &-new {
+
+        &-section {
+            
+        }
+
     }
 }
 

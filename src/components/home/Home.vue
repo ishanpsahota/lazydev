@@ -1,21 +1,23 @@
 <template>
   <section class="home" id="home">
-    <SuggestionsPill :keywords="suggestions" />
-    <div class="row mx-0 p-3 text-center d-flex" v-if="blogs == null">
-      <b-spinner label="Spinning" class="m-auto"  ></b-spinner>    
-    </div>    
-    <BlogContainer title="trending articles" v-if="blogs" :blogs="blogs" />        
+    <SuggestionsPill title="suggested categories" :keywords="suggestions" />
+    <div class=" w-100 mx-0 p-2">
+      <b-spinner class="" v-if="loading.trending" />
+      <blog-container v-if="blogs.trending" title="trending articles" :blogs="blogs.trending" />
+      <div v-if="error.trending" class="alert alert-primary" role="alert">
+        <strong>{{error.trending}}</strong>
+      </div> 
+    </div>
+    
   </section>
 </template>
 
 <script>
 
-import BlogContainer from '../blog-container/BlogContainer'
+import BlogContainer from '../blogs-component/blog-container/BlogContainer'
 import SuggestionsPill from '../suggestions-pill/SuggestionsPill'
 import GlassDiv from '../glass-item/GlassDiv';
-
 import api from '../../api/index'
-
 import { BSpinner } from 'bootstrap-vue'
 
 export default {
@@ -24,33 +26,25 @@ export default {
       BlogContainer,
       SuggestionsPill,      
       GlassDiv,
-      BSpinner
+      BSpinner,
+        BlogContainer
     },
 
     data() {
         return {                  
-          blogs: null,
-          error: {
-            blogs: null
+          blogs: {
+            trending: null
           },
-          suggestions: [
-            {
-              word: 'Travel',
-              type: 'category'
+          error: {
+            blogs: {
+              trending: false
             },
-            {
-              word: 'Python',
-              type: 'tags'
-            },
-            {
-              word: 'CSS',
-              type: 'tags'
-            },
-            {
-              word: 'JS',
-              type: 'tags'
-            },          
-          ]
+            suggestions: null
+          },
+          suggestions: null,
+          loading: {
+            trending: true
+          }
         }
     },
 
@@ -60,16 +54,26 @@ export default {
             return link.split(" ").join("-").toLowerCase();
         },
 
-        getBlogs() {
-          api.getBlogs()
+        getTrending() {
+          api.getTrendingBlogs()
           .then(res => {
             setTimeout(() => {
-              this.blogs = res.data.blogs  
+              this.loading.trending = false
+              this.blogs.trending = res.blogs
             }, 500);
             
           }).catch(err => {
-            this.error.blogs = err;
-            this.blogs = null
+            this.error.blogs.trending = err;
+            this.blogs.trending = null
+          })
+        },
+
+        getSuggestions() {
+          api.getCategories()
+          .then(res => {
+            this.suggestions = res.categories
+          }).catch(err => {
+            this.error.suggestions = err;
           })
         }
 
@@ -77,7 +81,8 @@ export default {
 
     created() {
 
-      this.getBlogs();
+      this.getTrending();
+      this.getSuggestions()
     },
 
 

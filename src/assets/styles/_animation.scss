@@ -3,7 +3,7 @@
 .animation {
 
     &-rotate {
-        animation: rotate 7.5s  ease-in-out infinite;
+        animation: rotate 45s  linear infinite;
     }
 
     &-top-right {
@@ -18,12 +18,12 @@
 
 @keyframes rotate {
 
-    from {
-        transform: rotate(0);
+    from {        
+        transform: rotateZ(0deg);
     }
 
     to {
-        transform: rotate(360);
+        transform: rotateZ(360deg);    
     }
     
 }
@@ -99,7 +99,7 @@
 @keyframes changeBg {
     
     0% {
-        background-color: $black-secondary;
+        background-color: $black;
     }
 
     50% {
@@ -108,7 +108,7 @@
     }   
 
     100% {
-        background-color: $black-secondary;
+        background-color: $black;
         box-shadow: none;
     }
     

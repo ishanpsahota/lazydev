@@ -59,3 +59,7 @@ exports.hardcodeSys = function _callee2(phrase) {
     }
   });
 };
+
+exports.getTitle = function (title) {
+  return title.split("-").join(" ");
+};

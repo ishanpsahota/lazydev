@@ -1,19 +1,19 @@
 <template>
   <div class="row mx-0 p-2 mt-3 blogs-view-container">
-    <div class="row w-100 mx-0 p-3 d-flex" v-if="blog == null">
+    <div class="row w-100 mx-0 p-3 d-flex" v-if="loader.blog">
       <b-spinner label="Spinning" class="m-auto"/>
     </div>
     <div class="blog-view-header col-12 p-0 m-0 no-gutters" v-if="blog">      
       <div class="col-xl-6 mx-auto col-12" >
-        <div  class="blog-view-hero-wrapper mx-auto">
-          <blog-item v-if="blog.image" :category="blog.category" :image="blog.image" :title="blog.title" :containerItem="false"  />          
-          <glass-div v-else :title="blog.title" :category="blog.category" :animation="false" :containerItem="false" :ifBlogContainerItem="false" :size="'md'" />
+        <div  class="blog-view-hero-wrapper m-auto">
+          <blog-item v-if="blog.image" :category="blog.category" :image="blog.image" :title="blog.title"  />          
+          <glass-div v-else :title="blog.title" :category="blog.category" />          
         </div>                      
       </div>      
       <div class="col-12 my-2 text-center">        
         <h6> By 
-          <router-link :to="'/authors/' + getAuthor(blog.author.authorName)" class="clickable">
-            {{blog.author.authorName}}
+          <router-link :to="'/authors/' + getAuthor(blog.author)" class="clickable">
+            {{blog.author}}
           </router-link>
         </h6>        
         <small> <b-icon-calendar2 /> 
@@ -25,7 +25,7 @@
     </div>      
 	  <div class="blog-view-main w-100" v-if="blog">
       <div class="row w-100 mx-0 ">
-        <div class="col-md-2 d-none sticky-top d-md-block  blog-view-index-wrapper ">         
+        <div class="col-md-3 col-lg-2 d-none sticky-top d-md-block  blog-view-index-wrapper ">         
           <div class="sticky-top pt-5">
             <ul class="index-list">
               <li class="index-list-item" v-for="(block, i) in blog.blocks" :key="i"> 
@@ -46,14 +46,13 @@
           </div>                 
           <!-- <blog-index-list :blocks="blog.blocks" :liked="blog.liked" /> -->
         </div>
-        <div class="col-md-8 pt-5 blog-view-content-wrapper">
+        <div class="col-md-6 col-lg-8 pt-5 blog-view-content-wrapper">
           <div class="block-wrapper" v-for="(block, i) in blog.blocks" :key="i" :id="getId(block.heading)" :ref="getId(block.heading)">
             <h2 class="">
               {{block.heading}}
             </h2>
             <blog-image v-if="block.image" :image="block.image" :size="block.imageSize" />
-            <p class="text-sm-sm">
-              {{block.text}}
+            <p class="text-sm-sm" v-html="renderText(block.text)">                        
             </p>
             <glass-div class="mx-auto" :size="'sm'" v-if="block.tip" :animation="false" :category="null" :containerItem="false" :ifBlogContainerItem="false" :title="block.tip" />            
             <div class="blog-view-icons justify-content-end text-right p-3 d-flex flex-row" style="background: transparent">
@@ -65,14 +64,22 @@
             </div>
           </div>
         </div>
-        <div class="col-md-2 blog-view-ad-wrapper">
+        <div class="col-md-3 col-lg-2 blog-view-ad-wrapper">
           ads here
         </div>
       </div>
 	  </div>
-    <b-alert variant="danger" v-if="error.blog"> Can't find the blog. Try again! </b-alert>
+    <b-alert variant="danger" v-if="error.blog"> Can't find the blog. Try again! </b-alert>    
     <div class="blog-view-recommended w-100">
-      <blog-container title="similar articles" :blogs="similar" />
+      <div class="row w-100 mx-0 p-3 d-flex" v-if="loader.similar">
+        <b-spinner label="Spinning" class="m-auto"/>
+      </div>
+      <blog-container v-if="similar.length > 0" title="similar articles" :blogs="similar" />
+      <div v-if="similar == null" class="alert bg-blue-md col-12 col-md-3 text-center mx-auto  " role="alert">
+        <strong>Can't find any blogs similar to this.</strong>
+        <button class="btn bg-light  my-2" type="button" @click="getSimilar()"> Try again </button>
+      </div>
+      <b-alert variant="danger" v-if="error.similar"> Can't find the blog. Try again! </b-alert>    
     </div>    
   </div>	
 </template>
@@ -83,9 +90,9 @@ import BlogItem from '../../blog-item-content/BlogItem.vue'
 import GlassDiv from '../../glass-item/GlassDiv.vue'
 import BlogImage from '../BlogImage/BlogImage.vue'
 import BlogIndexList from '../blog-index-list/BlogIndexList';
-import BlogContainer from '../../blog-container/BlogContainer.vue'
 
 import api from '../../../api/index'
+import BlogContainer from '../blog-container/BlogContainer'
 
 export default {
   name: 'BlogView',
@@ -96,71 +103,34 @@ export default {
     BlogImage, 
     BIconBookmark, BIconBookmarkFill, 
     BIconHeart, BIconHeartFill,
-    BlogIndexList,
-    BlogContainer,
+    BlogIndexList,    
     BSpinner,
-    BAlert
+    BAlert,
+    BlogContainer
   },
   data() {
     return {
       blog: null,
+      loader: {
+        blog: false,
+        similar: false
+      },
       error: {
         blog: null,
         saveBlock: null,
-        saveBlog: null
+        saveBlog: null,
+        similarBlogs: null
       },
-      similar: [
-        {
-          title: 'Sukhna Lake',
-          image: 'https://res.cloudinary.com/ishanpsahota/image/upload/v1618941753/laazzzyyyy.dev/IMG20210204171458_wk2fct.jpg',
-          category: 'Travel'
-        },
-        {
-          title: 'Python',
-          image: null,
-          category: 'Programming'
-        },
-        {
-          title: 'Music',
-          image: null,
-          category: 'Music'
-        },
-        {
-          title: 'AirTags',
-          image: null,
-          category: 'Tech'
-        },
-        {
-          title: 'Trends in CSS',
-          image: null,
-          category: 'Web Development'
-        },
-        {
-          title: 'MEVN',
-          image: 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwyNXx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-          category: 'Web Development'
-        },
-        {
-          title: 'Schitts Creek',
-          image: 'https://th.bing.com/th/id/OIP.ks1accdV4kPRyPEYgRWhwwHaEK?w=317&h=180&c=7&o=5&dpr=1.25&pid=1.7',
-          category: 'Netflix'
-        }
-      ]
+      similar: []
     }
   },
   methods: {
     getAuthor(author) {
       return author.toLowerCase().split(" ").join("")
-    },
-
-    // getDate() {
-    //   var d = new Date()
-    //   // var s = d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear()
-    //   return d.getDate() + '/' + d.getMonth() + '/' + d.getFullYear()
-    // },
+    },    
 
     getDate(date, withoutHyphen) {
-      console.log(date)
+      // console.log(date)
       if(withoutHyphen)
         return date.split("T")[0].split("-").join("/");
       else return date.split("T")[0]
@@ -215,36 +185,63 @@ export default {
 
     },
 
-    getBlog() {
+    getBlog() { 
+      
+      this.loader.blog = true
+
       api.getSingleBlog(this.$route.params.title)
       .then(res => {
         if(res.blog == null)
           this.error.blog = "Can't find the blog"
-        else this.blog = res.blog
+        else {
+          this.loader.blog = false
+          this.blog = res.blog
+          setTimeout(() => {
+            this.getSimilar(this.blog.category)
+          }, 1500);
+        }
       }).catch(err => {
+        this.loader.blog = false
         this.error.blog = err
         this.blog = null
       })
     },
 
-    saveBlog() {
-      api.saveBlog(this.$route.params.title)
+    getSimilar(category) {
+
+      this.loader.similar = true
+
+      api.getSimilarBlogs(category, this.$route.params.title)
       .then(res => {
-        console.log(res)
+        this.loader.similar = false
+        if(res.blogs == []) this.similar = null
+        else this.similar = res.blogs
+        
       }).catch(err => {
-        console.log(err)
+        this.loader.similar = false
+        
+        this.error.similarBlogs = err
       })
     },
 
-    saveBlock() {
-
+    renderText(text) {
+      return text.replace(/\n/g, "<br />");
     }
-    
     
   },
 
-  mounted() {
-      this.getBlog();
+  created() {
+    this.getBlog();
+  },
+
+  watch: {
+
+     $route: {
+        immediate: true,
+        handler(to, from) {
+          this.getBlog()
+        }
+      }
   }
 
 }

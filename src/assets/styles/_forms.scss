@@ -2,60 +2,81 @@
     
 .form {
 
+    // &-control {
+    //     outline: none !important;
+    // }
+
+    // &-group {
+    //     margin: auto;
+    // }
+
+    // &-wrapper {
+    //     border: 0.15px solid $blue-md;
+    //     border-radius: 50px;
+    //     display: flex;
+    //     flex-direction: row;
+    //     justify-content: space-between;
+    //     padding: 0.5px 15px;
+    //     align-items: baseline;
+    // }
+
+    // &-input {
+
+    //     width: 90%;
+    //     margin-right: 10px;
+
+    //     input[type="text"] {
+
+    //         background: transparent;            
+    //         border: 0;
+    //         outline: 0px solid transparent !important;
+    //         padding: 2px 4px;
+
+    //         &:focus {
+
+    //             color: $primary;
+    //             outline: 0px solid transparent !important;
+    //             border: 0;                                
+
+    //         }  
+                        
+    //     }
+
+        
+    // }
+
+    // &-icon {
+
+    //     &-wrapper {
+    //         width: 10%;        
+
+    //     }
+
+    //     &-inner {
+    //         color: $secondary;
+    //         font-weight: 600;
+    //     }
+    // }
+
     &-control {
-        outline: none !important;
+
+        background-color: transparent;
+        border: 1px solid $blue-md !important;
+        color: $light !important;
+
+
+        &:focus {
+
+            background: transparent;
+            color: $light !important;
+        }
+
     }
 
     &-group {
-        margin: auto;
+        margin-bottom: 1.5rem;
     }
 
-    &-wrapper {
-        border: 0.15px solid $blue-md;
-        border-radius: 50px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 0.5px 15px;
-        align-items: baseline;
-    }
 
-    &-input {
-
-        width: 90%;
-        margin-right: 10px;
-
-        input[type="text"] {
-
-            background: transparent;            
-            border: 0;
-            outline: 0px solid transparent !important;
-            padding: 2px 4px;
-
-            &:focus {
-
-                color: $primary;
-                outline: 0px solid transparent !important;
-                border: 0;                                
-
-            }  
-                        
-        }
-
-        
-    }
-
-    &-icon {
-
-        &-wrapper {
-            width: 10%;        
-
-        }
-
-        &-inner {
-            color: $secondary;
-            font-weight: 600;
-        }
-    }
 
 }

@@ -1,31 +1,26 @@
 <template>
-  <div :class="['glass', 'glass-wrapper', size == 'sm' ? 'glass-wrapper-sm' : 'glass-wrapper' ]">
-      <img src="../../assets/glass/Ellipse02.png" :class="['glass-bg', size == 'sm' ? 'glass-bg-sm' : 'glass-bg-md',  animation ? ' animation-top-right animation-rotate ' : '', containerItem ? ' bg-right bg-top ' : ' bg-top-right ' ]"   />
-      <img src="../../assets/glass/Ellipse04.png" :class="['glass-bg', size == 'sm' ? 'glass-bg-sm' : 'glass-bg-md',  animation ? ' animation-bottom-left animation-rotate ' : '', containerItem ? ' bg-left bg-bottom ' : ' bg-bottom-left ' ]" />
-      <div class="glass-inner">
-          <blog-item :category="category" :containerItem="ifBlogContainerItem" :image="null" :title="title" :wrapperColor="ifBlogContainerItem ? 'dark' : null" />
-      </div>
-  </div>
+    <div class="glass-wrapper ">    
+        <div class="glass-circle glass-circle-2 glass-circle-xs animation-rotate pos-bottom pos-left"></div>                                    
+        <div class="glass-circle glass-circle-1 glass-circle-xs animation-rotate pos-top pos-right"></div>                                    
+        <div class="glass-inner d-flex flex-row">
+            <blog-items-inner-wrapper :category="category" :title="title" />
+        </div>
+    </div>                                        
 </template>
 
 <script>
-import BlogItem from '../blog-item-content/BlogItem.vue'
 
-
+import BlogItemsInnerWrapper from '../blogs-component/blog-items-inner-wrapper/BlogItemsInnerWrapper.vue'
 
 export default {
     name: 'GlassItem',
     components: {
+        BlogItemsInnerWrapper
       
-        BlogItem
     },
     props: {        
         title: String,
-        category: String,
-        animation: Boolean,
-        containerItem: Boolean,        
-        ifBlogContainerItem: Boolean,
-        size: String
+        category: String,        
     },
     data() {
         return {
@@ -34,20 +29,7 @@ export default {
     },
 
     methods: {
-
-        getPosition() {
-
-            var hor = ['left', 'right']
-            var vert = ['top', 'bottom']
-
-            var h = hor[Math.floor(Math.random()*2)];
-            if(h == 'left') {
-                var v = 'bottom'
-            } else v = 'top'
-
-            return 'bg-' + h + ' bg-' + v
-
-        }
+            
 
     }
 }

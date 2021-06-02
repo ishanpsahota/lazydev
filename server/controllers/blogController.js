@@ -4,9 +4,10 @@ const utils = require('../utils');
 // modals
 const Blog = require('../models/blog')
 const Log = require('../models/logs');
+const Category = require('../models/categories')
 
 exports.getAllBlogs = async function (req, res) {  
-    Blog.find({'showStatus' : true}).
+    Blog.find({'showStatus' : true}, [ 'title', 'image', 'category' ]).
     then((blogs) => {        
         return res.json({blogs})
     }).catch((error) => {
@@ -15,41 +16,7 @@ exports.getAllBlogs = async function (req, res) {
     })
 }
 
-exports.getSingleBlog = async function(req, res) {
-    // if(req.params.title)
-    // {
-    //     Blog.findOne({'title': utils.getTitleforSearch(req.params.title) })
-    //     .then((blog) => {
-            
-    //         try {
-    //             blog.hits = blog.hits + 1;
-    //             blog.save();
-                
-    //             let log = {
-    //                 route: 'hitBlog',
-    //                 remarks: `Increased the hit count for ${req.params.title}.`,
-    //                 date: new Date(Date.now())
-    //             }
-        
-    //             let logSave = utils.logActivity(log);
-    //             if(logSave != true) console.log(logSave)                        
-    //         }
-    //         catch(err) {
-    //             let log = {
-    //                 route: 'hitBlog',
-    //                 remarks: JSON.stringify(err)            
-    //             }
-        
-    //             let logSave = utils.logActivity(log);
-    //             if(logSave != true) console.log(logSave)                
-    //         }
-
-    //         return blog == null ? res.sendStatus(404) : res.json({blog})
-    //     }).catch((error) => {
-    //         console.log(error)
-    //         return res.sendStatus(404)
-    //     })
-    // }
+exports.getSingleBlog = async function(req, res) {    
     try {
         var blog = await Blog.findOne({'title': utils.getTitleforSearch(req.params.title), 'showStatus': true})        
         
@@ -191,5 +158,72 @@ exports.newBlog = async function(req, res) {
     catch(error)
     {
         return res.sendStatus(400)
+    }
+}
+
+exports.getCategories = async (req, res) => {
+    try
+    {
+        let categories = await Category.find();
+
+        return res.json({categories})
+    }
+    catch(error)
+    {
+        return res.json({error})
+    }
+}
+
+exports.getSimilarBlogs = async (req, res) => {
+    try {
+        // let type = req.query.type
+        let phrase = req.query.phrase     
+        let match = req.query.match           
+        let blogs = await Blog.find({'category': phrase.toLowerCase(), 'title': { $ne: utils.getTitleforSearch(match) }}, ['title', 'category', 'image'], { sort: { date: -1 } })
+        return res.json({blogs})                
+    }
+    catch(err) {
+        return res.json({err})
+    }
+}
+
+exports.getTrending = async (req, res) => {
+    try {
+
+        let category = req.query.category
+
+        var blogs = ''
+
+        if(category) {
+            blogs = await Blog.find({'category': category}, ['title', 'image', 'category'], {sort: { hits: -1 }})
+        }
+        else blogs = await Blog.find(null, ['title', 'image', 'category'], {sort: { hits: -1 }})
+
+        return res.json({blogs})
+    }
+    catch(err) {
+        return res.json({err})
+    }
+}
+
+exports.search = async (req, res) => {
+    try
+    {
+        let query = req.query.query        
+
+        var results = ''
+
+        if(query) {
+            results = await Blog.find(null, ['title', 'image', 'category'],{ $or: [{ title: query }, { category: query }] })
+            // results = await Blog.find({ $text: { $search: query } })
+            return res.json({blogs: results})
+        }
+        else {
+            results = await Blog.find({})
+            return res.json({blogs: results})
+        }
+    }
+    catch(error) {
+        return res.json({error})
     }
 }

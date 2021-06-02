@@ -13,7 +13,7 @@
                 <h4> <strong> SEE MORE <b-icon-arrow-right />  </strong> </h4>
             </router-link>
             <span class="badge badge-accent" v-if="category"> 
-                <router-link :to="'/blogs/c/' + get_title(toLowerCase(category))" class="text-capitalize">
+                <router-link :to="'/search?q=' + get_title(toLowerCase(category))" class="text-capitalize">
                     {{category}}
                 </router-link>
             </span>
@@ -28,7 +28,7 @@
                 <strong> {{title}} </strong>
             </h4>                        
             <span v-if="category" class="badge badge-accent mt-1 mx-auto mt-auto mb-2" > 
-                <router-link :to="'/blogs/c/' + get_title(toLowerCase(category))" class="text-capitalize">
+                <router-link :to="'/search?q=' + get_title(toLowerCase(category))" class="text-capitalize">
                     {{category}}
                 </router-link>
             </span>

@@ -6,7 +6,9 @@ var routes = express.Router(); // controllers
 
 var WebController = require('../../controllers/webController');
 
-var BlogController = require('../../controllers/blogController'); // default route
+var BlogController = require('../../controllers/blogController');
+
+var adminController = require('../../controllers/adminController'); // default route
 
 
 routes.get('/', function (req, res) {
@@ -26,4 +28,10 @@ routes.put('/blogs/save/:title', BlogController.saveUnsaveBlog);
 routes.put('/blogs/save/:title/block/:id', BlogController.saveBlock);
 routes.put('/blogs/status/change/:title', BlogController.showHideBlog);
 routes.post('/blogs/new', BlogController.newBlog);
+routes.get('/blogs/get/categories', BlogController.getCategories);
+routes.get('/blogs/get/similar', BlogController.getSimilarBlogs);
+routes.get('/blogs/get/trending', BlogController.getTrending);
+routes.get('/blogs/get/search', BlogController.search); // admin routes
+
+routes.post('/admin/new/category', adminController.newCategory);
 module.exports = routes;

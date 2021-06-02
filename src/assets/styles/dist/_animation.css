@@ -8,7 +8,7 @@
 }
 
 .animation-rotate {
-  animation: rotate 7.5s ease-in-out infinite;
+  animation: rotate 45s linear infinite;
 }
 .animation-top-right {
   animation: top-right 7.5s ease-in-out infinite;
@@ -19,10 +19,10 @@
 
 @keyframes rotate {
   from {
-    transform: rotate(0);
+    transform: rotateZ(0deg);
   }
   to {
-    transform: rotate(360);
+    transform: rotateZ(360deg);
   }
 }
 @keyframes top-right {
@@ -55,14 +55,14 @@
 }
 @keyframes changeBg {
   0% {
-    background-color: #020c12;
+    background-color: #121212;
   }
   50% {
     background-color: #2b2d42;
     box-shadow: 5px 5px 10px 0px #000;
   }
   100% {
-    background-color: #020c12;
+    background-color: #121212;
     box-shadow: none;
   }
 }

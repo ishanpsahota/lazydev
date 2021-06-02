@@ -26,3 +26,7 @@ exports.hardcodeSys = async function(phrase) {
     })
     
 }
+
+exports.getTitle = (title) => {
+    return title.split("-").join(" ");
+}

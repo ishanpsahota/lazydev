@@ -11,10 +11,7 @@ var blogSchema = new mongoose.Schema({
   category: {
     type: String
   },
-  author: {
-    authorId: mongoose.Types.ObjectId,
-    authorName: String
-  },
+  author: String,
   date: {
     type: Date,
     "default": new Date(Date.now())
@@ -35,7 +32,10 @@ var blogSchema = new mongoose.Schema({
     tip: String,
     text: String,
     imageSize: String,
-    saved: Boolean,
+    saved: {
+      type: Boolean,
+      "default": false
+    },
     image: String
   }],
   showStatus: {

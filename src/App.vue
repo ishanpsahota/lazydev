@@ -1,8 +1,10 @@
 <template>
-  <div id="app" class="container-fluid">   
-    <Header />
-    <router-view/>     
-    <Footer />
+  <div id="app" class="container-fluid root-wrapper">          
+    <section class="app-wrapper">
+      <Header />
+      <router-view/>     
+      <Footer />
+    </section>    
   </div>
 </template>
 
@@ -19,3 +21,7 @@ export default {
   }
 }
 </script>
+
+<style>
+  
+</style>

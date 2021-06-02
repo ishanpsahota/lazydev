@@ -13,6 +13,10 @@ var _Home = _interopRequireDefault(require("../views/home/Home.vue"));
 
 var _Blogs = _interopRequireDefault(require("../views/blogs/Blogs.vue"));
 
+var _TestView = _interopRequireDefault(require("../views/test/TestView.vue"));
+
+var _SearchView = _interopRequireDefault(require("../views/search/SearchView.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -27,6 +31,10 @@ var routes = [{
   path: '/',
   name: 'Home',
   component: _Home["default"]
+}, {
+  path: '/search',
+  name: 'Search',
+  component: _SearchView["default"]
 }, {
   path: '/blogs',
   component: _Blogs["default"],
@@ -46,7 +54,18 @@ var routes = [{
         return _interopRequireWildcard(require('../components/blogs-component/blog-view/BlogView.vue'));
       });
     }
+  }, {
+    path: 'create',
+    component: function component() {
+      return Promise.resolve().then(function () {
+        return _interopRequireWildcard(require('../components/admin/blogs/BlogNew.vue'));
+      });
+    }
   }]
+}, {
+  path: '/test',
+  name: 'TestingComponents',
+  component: _TestView["default"]
 } // {
 //   path: '/about',
 //   name: 'About',
