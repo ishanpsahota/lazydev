@@ -208,7 +208,7 @@
 
     
     &-suggestions {
-        font-size: 105% ; 
+        font-size: 0.9rem ; 
         border: 1px solid rgba( 255, 255, 255, 0.18 );border: 1px solid rgba( 255, 255, 255, 0.18 );
     }
 
@@ -330,15 +330,15 @@
     background-color: $dark-md !important;
     box-shadow: $shadow;
 
-    div {
-        background-color: transparent !important;
-    }
+    // div {
+    //     background-color: transparent !important;
+    // }
 
     ul.footer-list {
         background-color: transparent;
         margin: 1rem auto 1rem 0;
         padding-left: 0;
-        width: 50%;
+        // width: 50%;
 
         li {
             padding-left: 1rem;
@@ -347,15 +347,17 @@
 }
 
 .list-inverted {
-    margin: 1rem 0 1rem auto !important;
+    // margin: 1rem 0 1rem auto !important;
+    margin: auto;
     li {
+        width: 100%;
         border-right: 1px solid rgba(255, 255, 255, 0.18);
         border-left: none;
         border-radius: 0;
         border-top-left-radius: 10px;
         border-bottom-left-radius: 10px;
-        text-align: right;
-        padding-right: 1rem;
+        text-align: right;        
+        padding-right: 1rem !important;
     }
 }
 

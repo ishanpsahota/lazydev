@@ -1,9 +1,10 @@
 <template>
     <div class="row w-100 mx-0">
         <div class="border-bottom m-3 border-black-light">
-            <h2> Search results for 
+            <h2 v-if="query"> Search results for 
                 <span class="text-gradient"> {{query}} </span>
             </h2>
+            <h2 v-else> Showing all blogs </h2>
         </div>        
         <div class="col-12">
             <b-spinner v-if="loader.results" />
@@ -31,6 +32,7 @@ export default {
     data() {
         return {
             query: this.$route.query.q,
+            type: this.$route.query.type,
             results: null,
             loader: {
                 results: true
@@ -43,7 +45,7 @@ export default {
 
     methods: {
         getResults() {
-            api.search(this.query)
+            api.search(this.query, this.type ? this.type : null)
             .then(res => {
                 this.loader.results = false
                 // console.log(res)

@@ -20,13 +20,13 @@
             </ul>
         </div>
         <div class="col-md-6 text-center py-5 d-flex">
-            <h1 class="text-gradient m-auto">
+            <h2 class="text-gradient m-auto">
                 <router-link to="/">
                     <strong>
                         laazzzyyyy.dev
                     </strong>
                 </router-link>
-            </h1>
+            </h2>
 
         </div>
         <div class="col-md-3 text-center py-3 text-md-right">

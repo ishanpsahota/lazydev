@@ -5,10 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var axios = require('axios'); // const url = 'http://localhost:8081/api/v1'
+var axios = require('axios');
 
+var url = 'http://localhost:8081/api/v1'; // const url = 'https://lazydevapi.herokuapp.com/api/v1'
 
-var url = 'https://lazydevapi.herokuapp.com/api/v1';
 var links = {
   getBlogs: url + '/blogs',
   getSingleBlog: url + '/blogs/',
@@ -109,12 +109,12 @@ var _default = {
       });
     });
   },
-  search: function search(query) {
+  search: function search(query, type) {
     var _this8 = this;
 
     if (query) {
       return new Promise(function (resolve, reject) {
-        axios.get(_this8.getLinks().search + "?query=".concat(query)).then(function (res) {
+        axios.get(_this8.getLinks().search + "?query=".concat(query, "&type=").concat(type)).then(function (res) {
           resolve(res.data);
         })["catch"](function (err) {
           reject(err);

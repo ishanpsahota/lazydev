@@ -3,9 +3,9 @@
     <div class="row w-100 mx-0 p-3 d-flex" v-if="loader.blog">
       <b-spinner label="Spinning" class="m-auto"/>
     </div>
-    <div class="blog-view-header col-12 p-0 m-0 no-gutters" v-if="blog">      
+    <div class="blogs-view-header col-12 p-0 m-0 no-gutters" v-if="blog">      
       <div class="col-xl-6 mx-auto col-12" >
-        <div  class="blog-view-hero-wrapper m-auto">
+        <div  class="blogs-view-hero-wrapper m-auto">
           <blog-item v-if="blog.image" :category="blog.category" :image="blog.image" :title="blog.title"  />          
           <glass-div v-else :title="blog.title" :category="blog.category" />          
         </div>                      
@@ -17,7 +17,7 @@
           </router-link>
         </h6>        
         <small> <b-icon-calendar2 /> 
-          <router-link :to="'/blogs/d/' + getDate(blog.date, true)" class="clickable">
+          <router-link :to="'/search?q=' + getDate(blog.date, true) + '&type=date'" class="clickable">
             &nbsp; {{getDate(blog.date, false)}}
           </router-link>
         </small>        
@@ -69,7 +69,11 @@
         </div>
       </div>
 	  </div>
-    <b-alert variant="danger" v-if="error.blog"> Can't find the blog. Try again! </b-alert>    
+    <div v-if="error.blog" class="alert bg-blue-md col-12 col-md-3 text-center mx-auto  " role="alert">
+        <strong>Can't find any blogs.</strong>
+        <hr>
+        <button class="btn bg-light  my-2" type="button" @click="getBlog()"> Try again </button>
+    </div>
     <div class="blog-view-recommended w-100">
       <div class="row w-100 mx-0 p-3 d-flex" v-if="loader.similar">
         <b-spinner label="Spinning" class="m-auto"/>
@@ -116,10 +120,10 @@ export default {
         similar: false
       },
       error: {
-        blog: null,
-        saveBlock: null,
-        saveBlog: null,
-        similarBlogs: null
+        blog: false,
+        saveBlock: false,
+        saveBlog: false,
+        similarBlogs: false
       },
       similar: []
     }
@@ -132,7 +136,7 @@ export default {
     getDate(date, withoutHyphen) {
       // console.log(date)
       if(withoutHyphen)
-        return date.split("T")[0].split("-").join("/");
+        return date.split("T")[0].split("-").join("_");
       else return date.split("T")[0]
     },
 
@@ -190,16 +194,22 @@ export default {
       this.loader.blog = true
 
       api.getSingleBlog(this.$route.params.title)
-      .then(res => {
+      .then(res => {        
         if(res.blog == null)
-          this.error.blog = "Can't find the blog"
+        {
+          this.loader.blog = false
+          this.error.blog = true
+          console.log('h')
+        }
         else {
           this.loader.blog = false
-          this.blog = res.blog
-          setTimeout(() => {
-            this.getSimilar(this.blog.category)
-          }, 1500);
+          this.blog = res.blog         
         }
+
+         setTimeout(() => {
+            this.getSimilar(this.blog ? this.blog.category : null)
+          }, 1500);
+
       }).catch(err => {
         this.loader.blog = false
         this.error.blog = err
@@ -211,17 +221,28 @@ export default {
 
       this.loader.similar = true
 
-      api.getSimilarBlogs(category, this.$route.params.title)
-      .then(res => {
-        this.loader.similar = false
-        if(res.blogs == []) this.similar = null
-        else this.similar = res.blogs
-        
-      }).catch(err => {
-        this.loader.similar = false
-        
-        this.error.similarBlogs = err
-      })
+      if(!category || !this.$route.params.title) {
+        api.getTrendingBlogs()
+        .then(res => {
+          this.loader.similar = false
+          this.similar = res.blogs
+        }).catch(err => {
+          this.error.similarBlogs = err;
+        })
+      }
+      else {
+        api.getSimilarBlogs(category, this.$route.params.title)
+        .then(res => {
+          this.loader.similar = false
+          if(res.blogs == []) this.similar = null
+          else this.similar = res.blogs
+          
+        }).catch(err => {
+          this.loader.similar = false
+          
+          this.error.similarBlogs = err
+        })
+      }      
     },
 
     renderText(text) {

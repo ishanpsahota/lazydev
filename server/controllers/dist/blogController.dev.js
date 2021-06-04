@@ -479,21 +479,43 @@ exports.getTrending = function _callee10(req, res) {
 };
 
 exports.search = function _callee11(req, res) {
-  var query, results;
+  var query, type, results;
   return regeneratorRuntime.async(function _callee11$(_context11) {
     while (1) {
       switch (_context11.prev = _context11.next) {
         case 0:
           _context11.prev = 0;
           query = req.query.query;
+          type = req.query.type;
           results = '';
 
           if (!query) {
-            _context11.next = 10;
+            _context11.next = 21;
             break;
           }
 
-          _context11.next = 6;
+          if (!(type == 'date')) {
+            _context11.next = 14;
+            break;
+          }
+
+          query = query.split("_");
+          console.log(query);
+          console.log(new Date(Number(query[0]), Number(query[1]), Number(query[2])));
+          _context11.next = 11;
+          return regeneratorRuntime.awrap(Blog.find({
+            "date": {
+              $gte: new Date(query[0], query[1], query[2])
+            }
+          }, ['title', 'image', 'category']));
+
+        case 11:
+          results = _context11.sent;
+          _context11.next = 17;
+          break;
+
+        case 14:
+          _context11.next = 16;
           return regeneratorRuntime.awrap(Blog.find(null, ['title', 'image', 'category'], {
             $or: [{
               title: query
@@ -502,37 +524,41 @@ exports.search = function _callee11(req, res) {
             }]
           }));
 
-        case 6:
+        case 16:
           results = _context11.sent;
+
+        case 17:
+          // results = await Blog.find({ $text: { $search: query } })
+          console.log(results);
           return _context11.abrupt("return", res.json({
             blogs: results
           }));
 
-        case 10:
-          _context11.next = 12;
+        case 21:
+          _context11.next = 23;
           return regeneratorRuntime.awrap(Blog.find({}));
 
-        case 12:
+        case 23:
           results = _context11.sent;
           return _context11.abrupt("return", res.json({
             blogs: results
           }));
 
-        case 14:
-          _context11.next = 19;
+        case 25:
+          _context11.next = 30;
           break;
 
-        case 16:
-          _context11.prev = 16;
+        case 27:
+          _context11.prev = 27;
           _context11.t0 = _context11["catch"](0);
           return _context11.abrupt("return", res.json({
             error: _context11.t0
           }));
 
-        case 19:
+        case 30:
         case "end":
           return _context11.stop();
       }
     }
-  }, null, null, [[0, 16]]);
+  }, null, null, [[0, 27]]);
 };

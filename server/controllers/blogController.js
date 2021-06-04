@@ -209,13 +209,25 @@ exports.getTrending = async (req, res) => {
 exports.search = async (req, res) => {
     try
     {
-        let query = req.query.query        
+        let query = req.query.query      
+        let type = req.query.type          
 
         var results = ''
 
         if(query) {
-            results = await Blog.find(null, ['title', 'image', 'category'],{ $or: [{ title: query }, { category: query }] })
+
+            if(type == 'date') {
+                let q = query.split("_");  
+                let d = new Date(2021, 5, 23)
+                console.log(q)
+                console.log(new Date(2021, 05, 23))
+                console.log(d)
+                console.log(new Date( Number(q[0]), Number(q[1]), Number(q[2])))              
+                results = await Blog.find({ "date": { $gte: new Date(q[0], q[1], q[2]) } }, ['title', 'image', 'category'] );
+            }
+            else results = await Blog.find(null, ['title', 'image', 'category'],{ $or: [{ title: query }, { category: query }] })
             // results = await Blog.find({ $text: { $search: query } })
+            console.log(results)
             return res.json({blogs: results})
         }
         else {

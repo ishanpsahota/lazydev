@@ -221,7 +221,7 @@
 }
 
 .badge-suggestions {
-  font-size: 105%;
+  font-size: 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
@@ -304,30 +304,27 @@
   background-color: #0d1f2d !important;
   box-shadow: 5px 5px 10px 0px #000;
 }
-.footer div {
-  background-color: transparent !important;
-}
 .footer ul.footer-list {
   background-color: transparent;
   margin: 1rem auto 1rem 0;
   padding-left: 0;
-  width: 50%;
 }
 .footer ul.footer-list li {
   padding-left: 1rem;
 }
 
 .list-inverted {
-  margin: 1rem 0 1rem auto !important;
+  margin: auto;
 }
 .list-inverted li {
+  width: 100%;
   border-right: 1px solid rgba(255, 255, 255, 0.18);
   border-left: none;
   border-radius: 0;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   text-align: right;
-  padding-right: 1rem;
+  padding-right: 1rem !important;
 }
 
 .divider {

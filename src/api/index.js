@@ -1,7 +1,7 @@
 const axios = require('axios')
 
-// const url = 'http://localhost:8081/api/v1'
-const url = 'https://lazydevapi.herokuapp.com/api/v1'
+const url = 'http://localhost:8081/api/v1'
+// const url = 'https://lazydevapi.herokuapp.com/api/v1'
 
 const links = {
     getBlogs: url + '/blogs',
@@ -114,11 +114,11 @@ export default {
         
     },
 
-    search(query){
+    search(query, type){
 
         if(query) {
             return new Promise((resolve, reject) => {
-                axios.get(this.getLinks().search + `?query=${query}`).
+                axios.get(this.getLinks().search + `?query=${query}&type=${type}`).
                 then(res => {
                     resolve(res.data)
                 }).catch(err => {
