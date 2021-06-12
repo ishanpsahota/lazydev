@@ -12,8 +12,8 @@ import axios from 'axios';
 
 Vue.prototype.$http = axios;
 
-this.$http.defaults.headers.common['Access-Control-Allow-Origin'] = "*"
-this.$http.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
+Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Origin'] = "*"
+Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 
 
 Vue.config.productionTip = false
