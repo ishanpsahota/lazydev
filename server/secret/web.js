@@ -1,22 +1,23 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt-nodejs')
 
-const salt_f = 8
+// const bcrypt = require('bcrypt-nodejs')
 
-const db = `mongodb+srv://ishanprasadsahota:VaticanCameos@5h3r@cluster0.7otv3.mongodb.net/lazydev`
+// const salt_f = 8
+var MongoClient = require('mongodb').MongoClient
+const dbUrl = `mongodb+srv://ishanprasadsahota:VaticanCameos@5h3r@cluster0.7otv3.mongodb.net/lazydev`
 
-const pass = "SWX4sFzZakwQaKcUdZPmtuY4"
+// const pass = "SWX4sFzZakwQaKcUdZPmtuY4"
 
-const sysup = "4JzC3gquEqzhSchTwzvzgs5Z"
+// const sysup = "4JzC3gquEqzhSchTwzvzgs5Z"
 
-var ws = ""
-ws = generatePass(salt_f, sysup);
+// var ws = ""
+// ws = generatePass(salt_f, sysup);
 
-require('../models/webhandlers')
+// require('../models/webhandlers')
 
-const webUser = mongoose.model('webhandlers')
+// const webUser = mongoose.model('webhandlers')
 
-var connected = null;
+// var connected = null;
 
 async function connectDB() {
 
@@ -44,46 +45,77 @@ async function connectDB() {
 
 }
 
-async function generatePass(salt_factor, password) {
-    bcrypt.genSalt(salt_factor, function(err, salt) {
-        if(err) throw err
-        if(!salt) throw new Error("Not able to generate salt.")
-        if(salt) {
-            bcrypt.hash(password, salt, null, function(err2, hashed) {
-                if(err2) throw err2
-                if(!hashed) throw new Error("Not able to generate hashed password")
-                if(hashed) {
-                    console.log(hashed)
-                    ws = hashed
-                    console.log("ws: ", ws);
-                    return hashed;                
-                }
-            }) 
-        }
-    })
-}
+// async function generatePass(salt_factor, password) {
+//     bcrypt.genSalt(salt_factor, function(err, salt) {
+//         if(err) throw err
+//         if(!salt) throw new Error("Not able to generate salt.")
+//         if(salt) {
+//             bcrypt.hash(password, salt, null, function(err2, hashed) {
+//                 if(err2) throw err2
+//                 if(!hashed) throw new Error("Not able to generate hashed password")
+//                 if(hashed) {
+//                     console.log(hashed)
+//                     ws = hashed
+//                     console.log("ws: ", ws);
+//                     return hashed;                
+//                 }
+//             }) 
+//         }
+//     })
+// }
 
-
-function handleWeb(webStatus)
-{
+// function handleWeb(webStatus)
+// {
    
-    var webUserDoc = {
-        websiteStatus : webStatus,
-        username: 'ishanpsahota',
-        password: pass        
-    }
+//     var webUserDoc = {
+//         websiteStatus : webStatus,
+//         username: 'ishanpsahota',
+//         password: pass        
+//     }
 
-    webUser.create(webUserDoc, function(err, created) {
+//     webUser.create(webUserDoc, function(err, created) {
+//         if(err) throw new Error(err)
+//         if(!created) throw new Error("Not able to create the doc")
+//         if(created){
+//                 console.log("Created")
+//                 return 0;
+//         };
+//     })    
+
+//     return 0;
+// }
+
+
+// connectDB()
+
+var createTextIndex = function(db, callback) {
+    // Get the restaurants collection
+    var collection = db.collection('blogs');
+    // Create the index
+    collection.createIndex(
+      { name : "text" }, function(err, result) {
+      console.log(result);
+      callback(result);
+    });
+  };
+  
+  // use the createTextIndex function
+  
+  
+
+var mongoC = function() {
+    MongoClient.connect(dbUrl, function(err, db) {
+        
         if(err) throw new Error(err)
-        if(!created) throw new Error("Not able to create the doc")
-        if(created){
-                console.log("Created")
-                return 0;
-        };
-    })    
 
-    return 0;
+        console.log("Connected correctly to server");
+        createTextIndex(db, function() {
+          db.close();
+        });
+    });
+
+
+
 }
 
-
-connectDB()
+mongoC()

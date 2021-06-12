@@ -4,7 +4,7 @@
         <div class="blogs-item-container row " v-if="blogs.length > 0">
             <div class="blogs-item-wrapper" v-for="(blog, i) in blogs" :key="i">
                 <blog-container-item v-if="blog.image" :image="blog.image" :title="blog.title" :category="blog.category" />
-                <glass-div-vue v-else :category="blog.category" :title="blog.title" />
+                <glass-div-vue v-else size="xs" :category="blog.category" :title="blog.title" />
             </div>                                                  
         </div>                
     </div>

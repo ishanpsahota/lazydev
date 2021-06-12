@@ -25,7 +25,8 @@ const blogSchema = new mongoose.Schema({
     },
 
     image: {
-        type: String
+        url: String,
+        provider: String
     },
 
     hits: {
@@ -43,7 +44,10 @@ const blogSchema = new mongoose.Schema({
                 type: Boolean,
                 default: false
             },
-            image: String
+            image: {
+                url: String,
+                provider: String
+            }
         }
     ],
 
@@ -52,6 +56,23 @@ const blogSchema = new mongoose.Schema({
         default: true
     }
 })
+
+blogSchema.index(
+        { 
+            'title': 'text', 
+            'category': 'text', 
+            'blocks.heading': 'text', 
+            'blocks.text': 'text' 
+        },
+        {
+            weights: {
+                'title': 5,
+                'blocks.heading': 4,
+                'blocks.text': 3,
+                'category': 2
+            }
+        }
+    )
 
 blogSchema.statics.createBlog = (blog_data) => {
     if(blog_data) {

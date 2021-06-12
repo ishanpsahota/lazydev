@@ -10,6 +10,7 @@ var axios = require('axios');
 var url = 'http://localhost:8081/api/v1'; // const url = 'https://lazydevapi.herokuapp.com/api/v1'
 
 var links = {
+  createBlog: url + '/blogs/new',
   getBlogs: url + '/blogs',
   getSingleBlog: url + '/blogs/',
   saveBlog: url + '/blogs/save/',
@@ -18,17 +19,33 @@ var links = {
   getCategories: url + '/blogs/get/categories',
   getSimilarBlogs: url + '/blogs/get/similar',
   getTrendingBlogs: url + '/blogs/get/trending',
-  search: url + '/blogs/get/search'
+  search: url + '/blogs/get/search',
+  uploadImage: url + '/blogs/upload/image',
+  getNew: url + '/blogs/get/new'
 };
 var _default = {
+  createBlog: function createBlog(blog) {
+    var _this = this;
+
+    blog = {
+      blog: blog
+    };
+    return new Promise(function (resolve, reject) {
+      axios.post(_this.getLinks().createBlog, blog).then(function (res) {
+        resolve(res.data);
+      })["catch"](function (err) {
+        reject9(err);
+      });
+    });
+  },
   getLinks: function getLinks() {
     return links;
   },
   getBlogs: function getBlogs() {
-    var _this = this;
+    var _this2 = this;
 
     return new Promise(function (resolve, reject) {
-      axios.get(_this.getLinks().getBlogs).then(function (res) {
+      axios.get(_this2.getLinks().getBlogs).then(function (res) {
         resolve(res);
       })["catch"](function (err) {
         reject(err);
@@ -36,10 +53,10 @@ var _default = {
     });
   },
   getSingleBlog: function getSingleBlog(title) {
-    var _this2 = this;
+    var _this3 = this;
 
     return new Promise(function (resolve, reject) {
-      axios.get(_this2.getLinks().getSingleBlog + title).then(function (res) {
+      axios.get(_this3.getLinks().getSingleBlog + title).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);
@@ -47,10 +64,10 @@ var _default = {
     });
   },
   saveBlog: function saveBlog(title) {
-    var _this3 = this;
+    var _this4 = this;
 
     return new Promise(function (resolve, reject) {
-      axios.put(_this3.getLinks().saveBlock + title).then(function (res) {
+      axios.put(_this4.getLinks().saveBlock + title).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);
@@ -58,10 +75,10 @@ var _default = {
     });
   },
   saveBlock: function saveBlock(title, blockId) {
-    var _this4 = this;
+    var _this5 = this;
 
     return new Promise(function (resolve, reject) {
-      axios.put(_this4.getLinks().saveBlog + title + '/block/' + blockId).then(function (res) {
+      axios.put(_this5.getLinks().saveBlog + title + '/block/' + blockId).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);
@@ -69,10 +86,10 @@ var _default = {
     });
   },
   getCategories: function getCategories() {
-    var _this5 = this;
+    var _this6 = this;
 
     return new Promise(function (resolve, reject) {
-      axios.get(_this5.getLinks().getCategories).then(function (res) {
+      axios.get(_this6.getLinks().getCategories).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);
@@ -80,10 +97,10 @@ var _default = {
     });
   },
   getSimilarBlogs: function getSimilarBlogs(phrase, match) {
-    var _this6 = this;
+    var _this7 = this;
 
     return new Promise(function (resolve, reject) {
-      axios.get(_this6.getLinks().getSimilarBlogs + "?phrase=".concat(phrase, "&match=").concat(match)).then(function (res) {
+      axios.get(_this7.getLinks().getSimilarBlogs + "?phrase=".concat(phrase, "&match=").concat(match)).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);
@@ -91,18 +108,18 @@ var _default = {
     });
   },
   getTrendingBlogs: function getTrendingBlogs(category) {
-    var _this7 = this;
+    var _this8 = this;
 
     if (category) {
       return new Promise(function (resolve, reject) {
-        axios.get(_this7.getLinks().getTrendingBlogs + "?category=".concat(phrase)).then(function (res) {
+        axios.get(_this8.getLinks().getTrendingBlogs + "?category=".concat(phrase)).then(function (res) {
           resolve(res.data);
         })["catch"](function (err) {
           reject(err);
         });
       });
     } else return new Promise(function (resolve, reject) {
-      axios.get(_this7.getLinks().getTrendingBlogs).then(function (res) {
+      axios.get(_this8.getLinks().getTrendingBlogs).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);
@@ -110,19 +127,48 @@ var _default = {
     });
   },
   search: function search(query, type) {
-    var _this8 = this;
+    var _this9 = this;
 
     if (query) {
       return new Promise(function (resolve, reject) {
-        axios.get(_this8.getLinks().search + "?query=".concat(query, "&type=").concat(type)).then(function (res) {
+        axios.get(_this9.getLinks().search + "?q=".concat(query, "&type=").concat(type)).then(function (res) {
           resolve(res.data);
         })["catch"](function (err) {
           reject(err);
         });
       });
     } else return new Promise(function (resolve, reject) {
-      axios.get(_this8.getLinks().search).then(function (res) {
+      axios.get(_this9.getLinks().search).then(function (res) {
         resolve(res.data);
+      })["catch"](function (err) {
+        reject(err);
+      });
+    });
+  },
+  getNew: function getNew() {
+    var _this10 = this;
+
+    return new Promise(function (resolve, reject) {
+      axios.get(_this10.getLinks().getNew).then(function (res) {
+        resolve(res.data);
+      })["catch"](function (err) {
+        reject(err);
+      });
+    });
+  },
+  uploadImg: function uploadImg(image, name) {
+    var _this11 = this;
+
+    var formData = new FormData();
+    formData.append('image', image, name);
+    var config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    };
+    return new Promise(function (resolve, reject) {
+      axios.post(_this11.getLinks().uploadImage, formData, config).then(function (res) {
+        resolve(res);
       })["catch"](function (err) {
         reject(err);
       });

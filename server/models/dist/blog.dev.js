@@ -21,7 +21,8 @@ var blogSchema = new mongoose.Schema({
     "default": false
   },
   image: {
-    type: String
+    url: String,
+    provider: String
   },
   hits: {
     type: Number,
@@ -36,11 +37,27 @@ var blogSchema = new mongoose.Schema({
       type: Boolean,
       "default": false
     },
-    image: String
+    image: {
+      url: String,
+      provider: String
+    }
   }],
   showStatus: {
     type: Boolean,
     "default": true
+  }
+});
+blogSchema.index({
+  'title': 'text',
+  'category': 'text',
+  'blocks.heading': 'text',
+  'blocks.text': 'text'
+}, {
+  weights: {
+    'title': 5,
+    'blocks.heading': 4,
+    'blocks.text': 3,
+    'category': 2
   }
 });
 

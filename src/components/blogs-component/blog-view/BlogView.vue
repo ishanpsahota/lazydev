@@ -6,7 +6,7 @@
     <div class="blogs-view-header col-12 p-0 m-0 no-gutters" v-if="blog">      
       <div class="col-xl-6 mx-auto col-12" >
         <div  class="blogs-view-hero-wrapper m-auto">
-          <blog-item v-if="blog.image" :category="blog.category" :image="blog.image" :title="blog.title"  />          
+          <blog-item v-if="blog.image.url" :category="blog.category" :image="blog.image.url" :title="blog.title"  />          
           <glass-div v-else :title="blog.title" :category="blog.category" />          
         </div>                      
       </div>      
@@ -51,7 +51,7 @@
             <h2 class="">
               {{block.heading}}
             </h2>
-            <blog-image v-if="block.image" :image="block.image" :size="block.imageSize" />
+            <blog-image v-if="block.image.url" :image="block.image.url" :size="block.imageSize" />
             <p class="text-sm-sm" v-html="renderText(block.text)">                        
             </p>
             <glass-div class="mx-auto" :size="'sm'" v-if="block.tip" :animation="false" :category="null" :containerItem="false" :ifBlogContainerItem="false" :title="block.tip" />            

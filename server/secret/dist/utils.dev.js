@@ -63,3 +63,16 @@ exports.hardcodeSys = function _callee2(phrase) {
 exports.getTitle = function (title) {
   return title.split("-").join(" ");
 };
+
+var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+exports.generateString = function (length) {
+  var result = ' ';
+  var charactersLength = characters.length;
+
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return result.trim();
+};

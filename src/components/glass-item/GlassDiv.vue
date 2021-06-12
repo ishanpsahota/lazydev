@@ -1,8 +1,8 @@
 <template>
     <div class="glass-wrapper ">    
-        <div class="glass-circle glass-circle-2 glass-circle-xs animation-rotate pos-bottom pos-left"></div>                                    
-        <div class="glass-circle glass-circle-1 glass-circle-xs animation-rotate pos-top pos-right"></div>                                    
-        <div class="glass-inner d-flex flex-row">
+        <div :class="['glass-circle glass-circle-2 animation-rotate pos-bottom pos-left', `glass-circle-${size}` ]"></div>                                    
+        <div :class="['glass-circle glass-circle-1 animation-rotate pos-top pos-right', `glass-circle-${size}`]"></div>                                    
+        <div class="glass-inner d-flex flex-row" v-if="category || title">
             <blog-items-inner-wrapper :category="category" :title="title" />
         </div>
     </div>                                        
@@ -20,7 +20,8 @@ export default {
     },
     props: {        
         title: String,
-        category: String,        
+        category: String,
+        size: String  
     },
     data() {
         return {

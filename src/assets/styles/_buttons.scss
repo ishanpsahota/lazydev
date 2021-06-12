@@ -1,0 +1,8 @@
+@import 'variables';
+
+button.bg-primary {
+    &:hover {
+        background-color: $blue-md;
+        color: $light;
+    }
+}

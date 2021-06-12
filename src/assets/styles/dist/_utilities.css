@@ -2,18 +2,8 @@
   font-size: 16px;
 }
 
-.gradient {
-  background-color: #4158D0;
-  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-}
-
 :root {
   font-size: 16px;
-}
-
-.gradient {
-  background-color: #4158D0;
-  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
 }
 
 .animation-rotate {
@@ -228,6 +218,12 @@
 .badge-primary {
   background-color: #e86a92 !important;
 }
+.badge-black {
+  background-color: #121212 !important;
+}
+.badge-black-light {
+  background-color: #202124 !important;
+}
 .badge-secondary {
   background-color: #9ea3b0 !important;
   color: #121212 !important;
@@ -308,13 +304,14 @@
   background-color: transparent;
   margin: 1rem auto 1rem 0;
   padding-left: 0;
+  width: 75%;
 }
 .footer ul.footer-list li {
   padding-left: 1rem;
 }
 
 .list-inverted {
-  margin: auto;
+  margin: 1rem 0 1rem auto !important;
 }
 .list-inverted li {
   width: 100%;
@@ -329,7 +326,7 @@
 
 .divider {
   height: 0px;
-  background-color: #3f84e5;
+  background-color: rgba(63, 132, 229, 0.5);
 }
 
 .blur-img {
@@ -348,4 +345,15 @@
 }
 .pos-right {
   right: -25%;
+}
+
+.gradient-bg {
+  background-color: #4158D0;
+  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+.gradient-wrapper {
+  padding: 0;
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px 0px #000;
+  min-height: 30vh;
 }

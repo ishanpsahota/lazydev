@@ -29,18 +29,21 @@
 
                         </a>                        
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item d-flex">
                         <!-- <a class="nav-link" href="#">Link</a> -->
-                        <form action="/search" method="get" >
-                            <div class="form-group form-wrapper">                                                                                  
-                                <div class="form-input">
-                                    <input type="text"
-                                    class="form-control" name="q" v-model="search_query" @change="search()"  id="" aria-describedby="helpId" placeholder="Search"/>
-                                </div>
-                                <div class="form-icon-wrapper">                                    
-                                    <b-icon-search class="form-icon-inner clickable" @click="search()" />                                    
-                                </div>                                              
-                            </div>
+                        <form action="/search" method="get" >                        
+                            <b-form-group class="m-auto">
+                                <b-input-group class="border border-purple rounded-pill" >
+                                    <b-form-input id="search" type="text" required class="form-create-field border-0 form-create-text`" name="q" placeholder="Search" />
+                                    <b-input-group-append>                                        
+                                        <label for="search" class="my-auto">                                            
+                                            <button class="btn btn-sm" type="submit">
+                                                <b-icon-search class="form-icon-inner clickable" />                                    
+                                            </button>
+                                        </label>
+                                    </b-input-group-append>
+                                </b-input-group>
+                            </b-form-group>                                                            
                         </form>                                                                        
                     </li>
                     <!-- <li class="nav-item dropdown">
@@ -62,16 +65,19 @@
 
 <script>
 
-import { BIconGrid, BIconGridFill, BIconSearch, BIconPerson, BIconPencilSquare } from 'bootstrap-vue'
+import { BIconGrid, BIconGridFill, BIconSearch, 
+        BIconPerson, BIconPencilSquare, BForm, 
+        BFormGroup, BFormInput, BInputGroup,
+        BInputGroupAppend
+        } from 'bootstrap-vue'
 
 export default {
     name: 'Header',
     components: {
-        BIconGrid,
-        BIconGridFill,
-        BIconSearch,
-        BIconPerson,
-        BIconPencilSquare
+        BIconGrid, BIconGridFill, BIconSearch,
+        BIconPerson, BIconPencilSquare, BInputGroup,
+        BInputGroupAppend, BForm, BFormGroup, 
+        BFormInput
     },
 
     data() {
@@ -80,11 +86,7 @@ export default {
         }
     },
 
-    methods: {
-
-        search() {
-            console.log(this.search_query);
-        }
+    methods: {       
 
     }
 }

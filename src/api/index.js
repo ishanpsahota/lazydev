@@ -4,6 +4,7 @@ const url = 'http://localhost:8081/api/v1'
 // const url = 'https://lazydevapi.herokuapp.com/api/v1'
 
 const links = {
+    createBlog: url + '/blogs/new',
     getBlogs: url + '/blogs',
     getSingleBlog: url + '/blogs/',    
     saveBlog: url + '/blogs/save/',
@@ -12,10 +13,25 @@ const links = {
     getCategories: url + '/blogs/get/categories',
     getSimilarBlogs: url + '/blogs/get/similar',
     getTrendingBlogs: url + '/blogs/get/trending',
-    search: url + '/blogs/get/search'
+    search: url + '/blogs/get/search',
+    uploadImage: url + '/blogs/upload/image',
+    getNew: url + '/blogs/get/new'
 }
 
 export default {
+
+    createBlog(blog) {
+        blog = {blog}
+        return new Promise((resolve, reject) => {
+            axios.post(this.getLinks().createBlog, blog)
+            .then(res => {
+                resolve(res.data)
+            }).catch(err =>{
+                reject9(err)
+            })
+        })
+
+    },
 
     getLinks: () => {
         return links;
@@ -118,7 +134,7 @@ export default {
 
         if(query) {
             return new Promise((resolve, reject) => {
-                axios.get(this.getLinks().search + `?query=${query}&type=${type}`).
+                axios.get(this.getLinks().search + `?q=${query}&type=${type}`).
                 then(res => {
                     resolve(res.data)
                 }).catch(err => {
@@ -134,6 +150,45 @@ export default {
                 reject(err)
             })
         })
-    }
+    },
+
+    getNew() {
+
+        return new Promise((resolve, reject) => {
+            axios.get(this.getLinks().getNew)
+            .then(res => {
+                resolve(res.data)
+            }).catch(err => {
+                reject(err)
+            })
+        })
+
+    },
+
+    uploadImg(image, name) {
+
+        const formData = new FormData()
+
+        formData.append('image', image, name)
+
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+
+        return new Promise((resolve, reject) => {
+
+            axios.post(this.getLinks().uploadImage, formData, config)
+            .then(res => {
+                resolve(res)
+            }).catch(err => {
+                reject(err)
+            })
+            
+
+        })
+
+    },
 
 }

@@ -48,3 +48,45 @@ exports.getTitle = (title) => {
 exports.toLowerCase = (phrase) => {
     return phrase.toLowerCase()
 }
+
+exports.getAuthor = (author) => {
+    return author.toLowerCase().split(" ").join("")
+}
+
+exports.getDate = (date, withoutHyphen) => {
+    // console.log(date)
+    if(withoutHyphen)
+      return date.split("T")[0].split("-").join("_");
+    else return date.split("T")[0]
+}
+
+exports.getId = (heading) => {    
+    var array = heading.split(" ");
+    if(array.length == 1) {
+        let s = heading.charAt(0).toUpperCase();
+        for(var j = 1; j < heading.length; j++) {
+            s +=  heading[j]
+        }
+
+        return s;
+    }
+    else {
+        for(var i = 0; i < array.length; i++) {
+        array[i] = array[i].split("-").join("")
+        let str = array[i]        
+        // console.log(str)
+        let new_str = str[0].toUpperCase();
+        for(var j = 1; j < str.length; j++) {
+            new_str +=  str[j]
+        }
+        array[i] = new_str;
+        // console.log(array[i])
+        }
+
+        return array.join("")
+    }
+},
+
+exports.renderText = function(text) {
+    return text.replace(/\n/g, "<br />");
+}

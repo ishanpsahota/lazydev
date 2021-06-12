@@ -2,7 +2,7 @@
     <div class="row suggestions-pill-container mx-0 px-3 pt-3">
         <h5 class="px-1"> {{title}} </h5>
         <div class="col-12 px-0">
-            <div class="badge badge-suggestions badge-pill m-1 " :style="`background-color: ${randomColor()}`" v-for="(suggestion, i) in keywords" :key="i">            
+            <div class="badge badge-suggestions badge-pill badge-accent m-1 " v-for="(suggestion, i) in keywords" :key="i">            
                 <router-link :to="'/search?q=' + toLowerCase(suggestion.name)"
                     class="">
                     {{capitalize(suggestion.name)}}                    

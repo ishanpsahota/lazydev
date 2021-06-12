@@ -2,18 +2,22 @@
 
 .bg-dark {
     background-color: $dark;
+    color: $light;
 }
 
 .bg-dark-md {
     background-color: $dark-md;
+    color: $light;
 }
 
 .bg-danger {
     background-color: $danger;
+    color: $light;
 }
 
 .bg-info {
     background-color: $info;
+    color: $light;
 }
 
 .bg-light {
@@ -21,39 +25,49 @@
 }
 
 .bg-primary {
-    background-color: $primary;
+    background-color: $primary !important;
+    color: $light;
 }
 
 .bg-accent {
     background-color: $accent;
+    color: $light;
 }
 
 .bg-blue {
     background-color: $blue;
+    color: $light;
+
 }
 
 .bg-blue-md {
     background-color: $blue-md;
+    color: $light;
 }
 
 .bg-black {
     background-color: $black;
+    color: $light;
 }
 
 .bg-black-light {
     background-color: $black-light;
+    color: $light;
 }
 
 .bg-pitch-black {
     background-color: $pitch-black;
+    color: $light;
 }
 
 .bg-purple {
     background-color: $purple;
+    color: $light !important;
 }
 
 .bg-red {
     background-color: $red;
+    color: $light;
 }
 
 .bg-right {

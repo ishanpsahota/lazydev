@@ -41,3 +41,43 @@ exports.getTitle = function (title) {
 exports.toLowerCase = function (phrase) {
   return phrase.toLowerCase();
 };
+
+exports.getAuthor = function (author) {
+  return author.toLowerCase().split(" ").join("");
+};
+
+exports.getDate = function (date, withoutHyphen) {
+  // console.log(date)
+  if (withoutHyphen) return date.split("T")[0].split("-").join("_");else return date.split("T")[0];
+};
+
+exports.getId = function (heading) {
+  var array = heading.split(" ");
+
+  if (array.length == 1) {
+    var s = heading.charAt(0).toUpperCase();
+
+    for (var j = 1; j < heading.length; j++) {
+      s += heading[j];
+    }
+
+    return s;
+  } else {
+    for (var i = 0; i < array.length; i++) {
+      array[i] = array[i].split("-").join("");
+      var str = array[i]; // console.log(str)
+
+      var new_str = str[0].toUpperCase();
+
+      for (var j = 1; j < str.length; j++) {
+        new_str += str[j];
+      }
+
+      array[i] = new_str; // console.log(array[i])
+    }
+
+    return array.join("");
+  }
+}, exports.renderText = function (text) {
+  return text.replace(/\n/g, "<br />");
+};

@@ -314,7 +314,7 @@ exports.showHideBlog = function _callee6(req, res) {
 };
 
 exports.newBlog = function _callee7(req, res) {
-  var blog, saveBlog;
+  var blog, result;
   return regeneratorRuntime.async(function _callee7$(_context7) {
     while (1) {
       switch (_context7.prev = _context7.next) {
@@ -326,9 +326,9 @@ exports.newBlog = function _callee7(req, res) {
           return regeneratorRuntime.awrap(blog.save());
 
         case 5:
-          saveBlog = _context7.sent;
+          result = _context7.sent;
           return _context7.abrupt("return", res.json({
-            saveBlog: saveBlog
+            result: result
           }));
 
         case 9:
@@ -485,80 +485,106 @@ exports.search = function _callee11(req, res) {
       switch (_context11.prev = _context11.next) {
         case 0:
           _context11.prev = 0;
-          query = req.query.query;
+          query = req.query.q;
           type = req.query.type;
           results = '';
 
           if (!query) {
-            _context11.next = 21;
+            _context11.next = 12;
             break;
           }
 
-          if (!(type == 'date')) {
-            _context11.next = 14;
-            break;
-          }
+          // if(type == 'date') {
+          //     let q = query.split("_");  
+          //     let d = new Date(2021, 5, 23)
+          //     console.log(q)
+          //     console.log(new Date(2021, 05, 23))
+          //     console.log(d)
+          //     console.log(new Date( Number(q[0]), Number(q[1]), Number(q[2])))              
+          //     results = await Blog.find({ "date": { $gte: new Date(q[0], q[1], q[2]) } }, ['title', 'image', 'category'] );
+          // }
+          // else 
+          console.log(query); // results = await Blog.find(null, ['title', 'image', 'category'],{ $or: [{ 'title': query }, { 'category': query }] })
 
-          query = query.split("_");
-          console.log(query);
-          console.log(new Date(Number(query[0]), Number(query[1]), Number(query[2])));
-          _context11.next = 11;
+          _context11.next = 8;
           return regeneratorRuntime.awrap(Blog.find({
-            "date": {
-              $gte: new Date(query[0], query[1], query[2])
+            $text: {
+              $search: query
             }
-          }, ['title', 'image', 'category']));
+          }, ['title', 'image', 'category'], {
+            score: {
+              $meta: "textScore"
+            }
+          }).sort({
+            score: {
+              $meta: 'textScore'
+            }
+          }));
 
-        case 11:
+        case 8:
           results = _context11.sent;
-          _context11.next = 17;
-          break;
+          return _context11.abrupt("return", res.json({
+            blogs: results
+          }));
+
+        case 12:
+          _context11.next = 14;
+          return regeneratorRuntime.awrap(Blog.find(null, ['title', 'image', 'caategory']));
 
         case 14:
-          _context11.next = 16;
-          return regeneratorRuntime.awrap(Blog.find(null, ['title', 'image', 'category'], {
-            $or: [{
-              title: query
-            }, {
-              category: query
-            }]
+          results = _context11.sent;
+          return _context11.abrupt("return", res.json({
+            blogs: results
           }));
 
         case 16:
-          results = _context11.sent;
-
-        case 17:
-          // results = await Blog.find({ $text: { $search: query } })
-          console.log(results);
-          return _context11.abrupt("return", res.json({
-            blogs: results
-          }));
-
-        case 21:
-          _context11.next = 23;
-          return regeneratorRuntime.awrap(Blog.find({}));
-
-        case 23:
-          results = _context11.sent;
-          return _context11.abrupt("return", res.json({
-            blogs: results
-          }));
-
-        case 25:
-          _context11.next = 30;
+          _context11.next = 21;
           break;
 
-        case 27:
-          _context11.prev = 27;
+        case 18:
+          _context11.prev = 18;
           _context11.t0 = _context11["catch"](0);
           return _context11.abrupt("return", res.json({
             error: _context11.t0
           }));
 
-        case 30:
+        case 21:
         case "end":
           return _context11.stop();
       }
     }
-  }, null, null, [[0, 27]]);
+  }, null, null, [[0, 18]]);
+};
+
+exports.getNew = function _callee12(req, res) {
+  var blogs;
+  return regeneratorRuntime.async(function _callee12$(_context12) {
+    while (1) {
+      switch (_context12.prev = _context12.next) {
+        case 0:
+          _context12.prev = 0;
+          _context12.next = 3;
+          return regeneratorRuntime.awrap(Blog.find(null, ['title', 'image', 'category'], {
+            $sort: {
+              date: -1
+            }
+          }));
+
+        case 3:
+          blogs = _context12.sent;
+          return _context12.abrupt("return", res.json({
+            blogs: blogs
+          }));
+
+        case 7:
+          _context12.prev = 7;
+          _context12.t0 = _context12["catch"](0);
+          return _context12.abrupt("return", res.json(_context12.t0));
+
+        case 10:
+        case "end":
+          return _context12.stop();
+      }
+    }
+  }, null, null, [[0, 7]]);
 };
