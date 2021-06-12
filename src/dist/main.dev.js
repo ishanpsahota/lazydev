@@ -16,8 +16,13 @@ require("bootstrap-vue/dist/bootstrap-vue.css");
 
 require("./app.scss");
 
+var _axios = _interopRequireDefault(require("axios"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+_vue["default"].prototype.$http = _axios["default"];
+(void 0).$http.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
+(void 0).$http.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 _vue["default"].config.productionTip = false;
 new _vue["default"]({
   router: _router["default"],
