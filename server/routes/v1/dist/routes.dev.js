@@ -26,7 +26,7 @@ var auth = require('../../auth/auth'); // img upload dest
 
 
 var blogImagePath = multer.diskStorage({
-  destination: '../../assets/images/blogs',
+  destination: '/assets/images/blogs',
   filename: function filename(req, file, callback) {
     var ext = file.mimetype.split("/")[1];
     var name = utils.generateString(15) + '.' + ext;

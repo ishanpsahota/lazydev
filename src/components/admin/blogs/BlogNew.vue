@@ -181,7 +181,7 @@
                         </span>
                     </button>
                     <button class="btn btn-outline-danger btn-lg m-1" type="reset" > Reset blog </button>
-                    <button class="btn btn-block btn-primary" v-if="loaded.blog" @click="redirect()"> Redirect to {{loaded.title}} </button>
+                    <button class="btn btn-block btn-primary" v-if="loaded.blog" @click="redirect()"> Redirect to {{loaded.blog.title}} </button>
                 </b-form-group>
                 <b-alert v-if="error.blog" variant="danger" title="Error!"> {{error.blog}} </b-alert>
             </b-form>
@@ -367,7 +367,7 @@ export default {
 
         setImage(e, type) {          
             this.temp_image = e.target.files[0];
-            console.log(this.temp_image)
+            // console.log(this.temp_image)
         },
 
         uploadImage(type, blockId) {
@@ -437,7 +437,7 @@ export default {
             if(save) {
                 api.createBlog(this.blog)
                 .then(res => {
-                    console.log(res)
+                    // console.log(res)
                     if(res.result) {
                         this.loaded.blog = res.result
                         this.blog.title = ''
@@ -457,7 +457,7 @@ export default {
         },
 
         redirect() {
-            this.$router.push(getTitle(loaded.title));
+            this.$router.push(getTitle(loaded.blog.title));
         }
 
     },

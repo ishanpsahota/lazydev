@@ -16,7 +16,7 @@ const auth = require('../../auth/auth')
 
 // img upload dest
 const blogImagePath = multer.diskStorage({
-    destination: '../../assets/images/blogs',
+    destination: '/assets/images/blogs',
     filename: function(req, file, callback)
     {
         const ext = file.mimetype.split("/")[1]

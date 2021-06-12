@@ -5,10 +5,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var axios = require('axios');
+var axios = require('axios'); // const url = 'http://localhost:8081/api/v1'
 
-var url = 'http://localhost:8081/api/v1'; // const url = 'https://lazydevapi.herokuapp.com/api/v1'
 
+var url = 'https://lazydevapi.herokuapp.com/api/v1';
 var links = {
   createBlog: url + '/blogs/new',
   getBlogs: url + '/blogs',

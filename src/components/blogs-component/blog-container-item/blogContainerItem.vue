@@ -12,7 +12,7 @@ export default {
     props: {
         title: String,
         category: String,
-        image: String
+        image: Object
     }
 }
 </script>

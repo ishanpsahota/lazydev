@@ -199,7 +199,7 @@ export default {
         {
           this.loader.blog = false
           this.error.blog = true
-          console.log('h')
+          // console.log('h')
         }
         else {
           this.loader.blog = false
