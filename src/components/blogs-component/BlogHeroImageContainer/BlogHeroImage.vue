@@ -1,19 +1,20 @@
 <template>
-    <div class="blogs-item-img-wrapper" :style="`background-image: url('${image.url}`">
-        <blog-items-inner-wrapper :category="category" :title="title" />
+    <div class="blogs-view-hero-img-wrapper" :style="`background-image: url(${image.url})`">
+        <blog-items-inner-wrapper :category="category" :title="title"/>
     </div>
 </template>
 
 <script>
 import BlogItemsInnerWrapper from '../blog-items-inner-wrapper/BlogItemsInnerWrapper.vue'
 export default {
-    name: 'BlogContainerItem',
+    name: 'BlogHeroImage',
     components: { BlogItemsInnerWrapper },
     props: {
-        title: String,
         category: String,
+        title: String,
         image: Object
     }
+
 }
 </script>
 

@@ -5,9 +5,9 @@
         </div>
         <div :class="['blog-item-text px-1', wrapperColor == 'light' ? 'text-wrapper-light' : 'text-wrapper-dark']" >
             <router-link v-if="title"  class="blog-visit" :to="'/blogs/v/' + get_title(title)">                
-                    <h4 class="mx-auto text-center">
+                    <h3 class="mx-auto text-center">
                         <strong> {{title}} </strong>
-                    </h4>                
+                    </h3>                
             </router-link>
             <router-link v-else to="/blogs" class="blog-visit">
                 <h4> <strong> SEE MORE <b-icon-arrow-right />  </strong> </h4>
@@ -24,9 +24,9 @@
 			  <img :src="image" class="" />
 		</div>
         <div :class="['blog-view-hero-text-wrapper px-1', wrapperColor == 'light' ? 'text-wrapper-light' : 'text-wrapper-dark']" v-if="title">            
-            <h4 :class="[ category ? 'mt-auto' : 'm-auto', 'mx-auto text-center ']">
+            <h3 :class="[ category ? 'mt-auto' : 'm-auto', 'mx-auto text-center ']">
                 <strong> {{title}} </strong>
-            </h4>                        
+            </h3>                        
             <span v-if="category" class="badge badge-accent mt-1 mx-auto mt-auto mb-2" > 
                 <router-link :to="'/search?q=' + get_title(toLowerCase(category))" class="text-capitalize">
                     {{category}}

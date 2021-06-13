@@ -6,7 +6,8 @@
     <div class="blogs-view-header col-12 p-0 m-0 no-gutters" v-if="blog">      
       <div class="col-xl-6 mx-auto col-12" >
         <div  class="blogs-view-hero-wrapper m-auto">
-          <blog-item v-if="blog.image.url" :category="blog.category" :image="blog.image.url" :title="blog.title"  />          
+          <!-- <blog-item v-if="blog.image.url" :category="blog.category" :image="blog.image.url" :title="blog.title"  />           -->
+          <blog-hero-image :title="blog.title" v-if="blog.image.url" :image="blog.image" :category="blog.category" />
           <glass-div v-else :title="blog.title" :category="blog.category" />          
         </div>                      
       </div>      
@@ -94,7 +95,7 @@ import BlogItem from '../../blog-item-content/BlogItem.vue'
 import GlassDiv from '../../glass-item/GlassDiv.vue'
 import BlogImage from '../BlogImage/BlogImage.vue'
 import BlogIndexList from '../blog-index-list/BlogIndexList';
-
+import BlogHeroImage from '../BlogHeroImageContainer/BlogHeroImage.vue'
 import api from '../../../api/index'
 import BlogContainer from '../blog-container/BlogContainer'
 
@@ -108,7 +109,7 @@ export default {
     BIconBookmark, BIconBookmarkFill, 
     BIconHeart, BIconHeartFill,
     BlogIndexList,    
-    BSpinner,
+    BSpinner, BlogHeroImage,
     BAlert,
     BlogContainer
   },
@@ -270,4 +271,4 @@ export default {
 
 <style>
 
-</style>.
+</style>
