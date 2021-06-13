@@ -16,7 +16,7 @@ const cloudinaryConfig = require('../../controllers/cloudinary')
 
 // img upload dest
 const blogImagePath = multer.diskStorage({
-    destination: '/assets/images/blogs',
+    destination: '../dist/assets/images/blogs',
     filename: function(req, file, callback)
     {
         const ext = file.mimetype.split("/")[1]

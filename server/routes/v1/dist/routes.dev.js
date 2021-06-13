@@ -25,7 +25,7 @@ var cloudinaryConfig = require('../../controllers/cloudinary'); // auth middlewa
 
 
 var blogImagePath = multer.diskStorage({
-  destination: '/assets/images/blogs',
+  destination: '../dist/assets/images/blogs',
   filename: function filename(req, file, callback) {
     var ext = file.mimetype.split("/")[1];
     var name = utils.generateString(15) + '.' + ext;
