@@ -23,10 +23,10 @@ mongoose.connection.on('open', function () {
   console.log("MongoDB connected. ");
 }).on('error', function (err) {
   console.log("Mongoose encountered an error: ".concat(err));
-});
-var allowList = ['https://laazzzyyyydev.netlify.app/', '*'];
+}); // var allowList = ['https://laazzzyyyydev.netlify.app/', '*']
+
 app.use(cors({
-  origin: true,
+  origin: "*",
   preflightContinue: true
 }));
 app.use(helmet());

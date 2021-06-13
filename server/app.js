@@ -20,11 +20,11 @@ mongoose.connection.on('open', function() {
     console.log(`Mongoose encountered an error: ${err}`);
 })
 
-var allowList = ['https://laazzzyyyydev.netlify.app/', '*']
+// var allowList = ['https://laazzzyyyydev.netlify.app/', '*']
 
 app.use(cors({
-    origin: true,
-    preflightContinue: true,    
+    origin: "*",
+    preflightContinue: true
 }))
 app.use(helmet())
 app.use(bodyParser.json())
