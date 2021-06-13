@@ -20,7 +20,9 @@ mongoose.connection.on('open', function() {
     console.log(`Mongoose encountered an error: ${err}`);
 })
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://laazzzyyyydev.netlify.app'
+}))
 app.use(helmet())
 app.use(bodyParser.json())
 app.use(morgan('dev'))

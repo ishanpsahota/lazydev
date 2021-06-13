@@ -24,7 +24,9 @@ mongoose.connection.on('open', function () {
 }).on('error', function (err) {
   console.log("Mongoose encountered an error: ".concat(err));
 });
-app.use(cors());
+app.use(cors({
+  origin: 'https://laazzzyyyydev.netlify.app'
+}));
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(morgan('dev'));
