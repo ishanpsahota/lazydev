@@ -20,9 +20,8 @@ var BlogController = require('../../controllers/blogController');
 var adminController = require('../../controllers/adminController');
 
 var cloudinaryConfig = require('../../controllers/cloudinary'); // auth middleware
-
-
-var auth = require('../../auth/auth'); // img upload dest
+// const auth = require('../../auth/auth')
+// img upload dest
 
 
 var blogImagePath = multer.diskStorage({

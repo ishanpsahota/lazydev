@@ -12,7 +12,7 @@ const adminController = require('../../controllers/adminController')
 const cloudinaryConfig = require('../../controllers/cloudinary')
 
 // auth middleware
-const auth = require('../../auth/auth')
+// const auth = require('../../auth/auth')
 
 // img upload dest
 const blogImagePath = multer.diskStorage({

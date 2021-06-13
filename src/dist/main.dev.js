@@ -16,13 +16,12 @@ require("bootstrap-vue/dist/bootstrap-vue.css");
 
 require("./app.scss");
 
-var _axios = _interopRequireDefault(require("axios"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-_vue["default"].prototype.$http = _axios["default"];
-_vue["default"].prototype.$http.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
-_vue["default"].prototype.$http.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
+// import axios from 'axios';
+// Vue.prototype.$http = axios;
+// Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Origin'] = "*"
+// Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 _vue["default"].config.productionTip = false;
 new _vue["default"]({
   router: _router["default"],
