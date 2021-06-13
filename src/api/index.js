@@ -3,6 +3,9 @@ const axios = require('axios')
 // const url = 'http://localhost:8081/api/v1'
 const url = 'https://lazydevapi.herokuapp.com/api/v1'
 
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = "*"
+axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
+
 const links = {
     createBlog: url + '/blogs/new',
     getBlogs: url + '/blogs',
@@ -153,7 +156,6 @@ export default {
     },
 
     getNew() {
-
         return new Promise((resolve, reject) => {
             axios.get(this.getLinks().getNew)
             .then(res => {
@@ -162,7 +164,6 @@ export default {
                 reject(err)
             })
         })
-
     },
 
     uploadImg(image, name) {
@@ -178,17 +179,13 @@ export default {
         }
 
         return new Promise((resolve, reject) => {
-
             axios.post(this.getLinks().uploadImage, formData, config)
             .then(res => {
                 resolve(res)
             }).catch(err => {
                 reject(err)
-            })
-            
-
+            })            
         })
-
     },
 
 }

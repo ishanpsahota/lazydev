@@ -9,6 +9,8 @@ var axios = require('axios'); // const url = 'http://localhost:8081/api/v1'
 
 
 var url = 'https://lazydevapi.herokuapp.com/api/v1';
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
+axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 var links = {
   createBlog: url + '/blogs/new',
   getBlogs: url + '/blogs',

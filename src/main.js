@@ -8,9 +8,9 @@ import { BootstrapVue, IconsPlugin, BootstrapVueIcons } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './app.scss';
-// import axios from 'axios';
+import axios from 'axios';
 
-// Vue.prototype.$http = axios;
+Vue.prototype.$http = axios;
 
 // Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Origin'] = "*"
 // Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
