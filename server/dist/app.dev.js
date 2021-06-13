@@ -24,8 +24,9 @@ mongoose.connection.on('open', function () {
 }).on('error', function (err) {
   console.log("Mongoose encountered an error: ".concat(err));
 });
+var allowList = ['https://laazzzyyyydev.netlify.app/', '*'];
 app.use(cors({
-  origin: "*",
+  origin: true,
   preflightContinue: true
 }));
 app.use(helmet());
