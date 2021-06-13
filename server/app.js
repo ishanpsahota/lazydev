@@ -21,7 +21,8 @@ mongoose.connection.on('open', function() {
 })
 
 app.use(cors({
-    origin: 'https://laazzzyyyydev.netlify.app'
+    origin: "*",
+    preflightContinue: true,    
 }))
 app.use(helmet())
 app.use(bodyParser.json())
