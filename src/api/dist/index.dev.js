@@ -36,7 +36,7 @@ var _default = {
       axios.post(_this.getLinks().createBlog, blog).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
-        reject9(err);
+        reject(err);
       });
     });
   },

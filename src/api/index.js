@@ -30,7 +30,7 @@ export default {
             .then(res => {
                 resolve(res.data)
             }).catch(err =>{
-                reject9(err)
+                reject(err)
             })
         })
 
