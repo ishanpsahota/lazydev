@@ -17,6 +17,14 @@ var _TestView = _interopRequireDefault(require("../views/test/TestView.vue"));
 
 var _SearchView = _interopRequireDefault(require("../views/search/SearchView.vue"));
 
+var _AdminView = _interopRequireDefault(require("../views/admin/AdminView.vue"));
+
+var _DashboardView = _interopRequireDefault(require("../views/admin/dashboard/DashboardView.vue"));
+
+var _Login = _interopRequireDefault(require("../views/admin/login/Login.vue"));
+
+var _NotFound = _interopRequireDefault(require("../views/404/NotFound.vue"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -28,6 +36,9 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 _vue["default"].use(_vueRouter["default"]);
 
 var routes = [{
+  path: '*',
+  component: _NotFound["default"]
+}, {
   path: '/',
   name: 'Home',
   component: _Home["default"]
@@ -61,6 +72,25 @@ var routes = [{
         return _interopRequireWildcard(require('../components/admin/blogs/BlogNew.vue'));
       });
     }
+  }]
+}, {
+  path: '/admin',
+  component: _AdminView["default"],
+  children: [{
+    path: 'login',
+    name: 'AdminHome',
+    component: _Login["default"]
+  }, {
+    path: 'dashboard',
+    component: _DashboardView["default"],
+    children: [{
+      path: '',
+      component: function component() {
+        return Promise.resolve().then(function () {
+          return _interopRequireWildcard(require('../components/admin/Dashboard/DashboardHome/DashboardHome.vue'));
+        });
+      }
+    }]
   }]
 }, {
   path: '/test',

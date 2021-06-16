@@ -5,10 +5,18 @@ import Home from '../views/home/Home.vue'
 import Blogs from '../views/blogs/Blogs.vue'
 import Test from '../views/test/TestView.vue'
 import Search from '../views/search/SearchView.vue'
+import AdminView from '../views/admin/AdminView.vue'
+import DashboardView from '../views/admin/dashboard/DashboardView.vue'
+import AdminLogin from '../views/admin/login/Login.vue'
+import NotFound  from '../views/404/NotFound.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '*',
+    component: NotFound
+  },
   {
     path: '/',
     name: 'Home',
@@ -36,6 +44,27 @@ const routes = [
       {
         path: 'create',        
         component: () => import('../components/admin/blogs/BlogNew.vue')
+      }
+    ]
+  },
+  {
+    path: '/admin',
+    component: AdminView,
+    children: [
+      {
+        path: 'login',
+        name: 'AdminHome',
+        component: AdminLogin
+      },
+      {
+        path: 'dashboard',
+        component: DashboardView,
+        children: [
+          {
+            path: '',
+            component: () => import('../components/admin/Dashboard/DashboardHome/DashboardHome.vue')
+          },          
+        ]
       }
     ]
   },

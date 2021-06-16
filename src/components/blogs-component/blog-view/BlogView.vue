@@ -8,7 +8,8 @@
         <div  class="blogs-view-hero-wrapper m-auto">
           <!-- <blog-item v-if="blog.image.url" :category="blog.category" :image="blog.image.url" :title="blog.title"  />           -->
           <blog-hero-image :title="blog.title" v-if="blog.image.url" :image="blog.image" :category="blog.category" />
-          <glass-div v-else :title="blog.title" :category="blog.category" />          
+          <!-- <glass-div v-else :title="blog.title" :size="'md'" :category="blog.category" />           -->
+          <glass-div v-else :title="blog.title" :centre="true" :category="blog.category" />          
         </div>                      
       </div>      
       <div class="col-12 my-2 text-center">        
@@ -36,12 +37,22 @@
               </li>
             </ul>
             <div class="blog-view-icons p-3 text-center justify-content-center d-flex flex-column " style="background: transparent">                  
-              <div class="like-icon mx-auto" style="background: transparent">              
-                <b-icon-heart @click="triggerAction('liked', 1)" font-scale="2" :class="[blog.liked ? 'd-none' : 'd-block', 'm-1']" />
-                <b-icon-heart-fill class="text-purple" font-scale="2" @click="triggerAction('liked', 0)" :class="[blog.liked ? 'd-block' : 'd-none', 'm-1']" />                        
+              <div class="icon-wrapper mx-auto d-flex flex-column justify-content-center">
+                <div class="like-icon mx-auto" style="background: transparent">              
+                  <b-icon-heart @click="triggerAction('liked', 1)" font-scale="2" :class="[blog.liked ? 'd-none' : 'd-block', 'm-1']" />
+                  <b-icon-heart-fill class="text-purple" font-scale="2" @click="triggerAction('liked', 0)" :class="[blog.liked ? 'd-block' : 'd-none', 'm-1']" />                        
+                </div>
+                <small v-if="!blog.liked"> Like this post! </small>
+                <small v-else> Post Liked! </small>                  
               </div>
-              <small v-if="!blog.liked"> Like this post! </small>
-              <small v-else> Post Liked! </small>                  
+              <!-- <div class="icon-wrapper">
+                <div class="icon-whatsapp mx-auto" style="background: transparent">              
+                  <b-icon-heart @click="triggerAction('liked', 1)" font-scale="2" :class="[blog.liked ? 'd-none' : 'd-block', 'm-1']" />
+                  <b-icon-heart-fill class="text-purple" font-scale="2" @click="triggerAction('liked', 0)" :class="[blog.liked ? 'd-block' : 'd-none', 'm-1']" />                        
+                </div>
+                <small v-if="!blog.liked"> Like this post! </small>
+                <small v-else> Post Liked! </small>                  
+              </div> -->
             </div>   
             <b-alert dismissible fade :show="error.saveBlog" variant="danger"> Error saving blog!  </b-alert>        
           </div>                 
@@ -90,7 +101,10 @@
 </template>
 
 <script>
-import { BIconCalendar2, BIconBookmark, BIconBookmarkFill, BIconHeart, BIconHeartFill, BSpinner, BAlert } from 'bootstrap-vue'
+import { BIconCalendar2, BIconBookmark, BIconBookmarkFill, 
+        BIconHeart, BIconHeartFill, BSpinner, BAlert,
+        
+      } from 'bootstrap-vue'
 import BlogItem from '../../blog-item-content/BlogItem.vue'
 import GlassDiv from '../../glass-item/GlassDiv.vue'
 import BlogImage from '../BlogImage/BlogImage.vue'

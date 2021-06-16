@@ -2,7 +2,7 @@
     <!-- <div class="overlay"> -->
         <div class="text-wrapper text-center">
             <router-link class="mx-auto mt-auto blog-visit" :to="'/blogs/v/' + getTitle(title)">
-                <h4 class="">
+                <h4 class="text-light">
                     <strong>                                    
                         {{title}}
                     </strong>

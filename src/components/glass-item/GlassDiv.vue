@@ -1,7 +1,8 @@
 <template>
     <div class="glass-wrapper ">    
-        <div :class="['glass-circle glass-circle-2 animation-rotate pos-bottom pos-left', `glass-circle-${size}` ]"></div>                                    
-        <div :class="['glass-circle glass-circle-1 animation-rotate pos-top pos-right', `glass-circle-${size}`]"></div>                                    
+        <div v-if="!centre" :class="['glass-circle glass-circle-2 animation-rotate pos-bottom pos-left', `glass-circle-${size}` ]"></div>                                    
+        <div v-if="!centre" :class="['glass-circle glass-circle-1 animation-rotate pos-top pos-right', `glass-circle-${size}`]"></div>                                    
+        <div v-if="centre" :class="['glass-circle glass-circle-2 glass-circle-lg ', centre ? ' glass-circle-centre ' : '']"></div>                                    
         <div class="glass-inner d-flex flex-row" v-if="category || title">
             <blog-items-inner-wrapper :category="category" :title="title" />
         </div>
@@ -21,7 +22,8 @@ export default {
     props: {        
         title: String,
         category: String,
-        size: String  
+        size: String,
+        centre: Boolean
     },
     data() {
         return {

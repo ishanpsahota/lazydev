@@ -3,12 +3,14 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-import { BootstrapVue, IconsPlugin, BootstrapVueIcons } from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin, BootstrapVueIcons } from 'bootstrap-vue';
+import bootstrap from 'bootstrap'
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './app.scss';
 import axios from 'axios';
+import 'jquery'
 
 Vue.prototype.$http = axios;
 
@@ -20,6 +22,7 @@ Vue.config.productionTip = false
 
 new Vue({
   router,
+  bootstrap,
   store,
   BootstrapVue,
   BootstrapVueIcons,

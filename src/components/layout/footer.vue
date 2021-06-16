@@ -1,6 +1,6 @@
 <template>
     <div class="footer row w-100 mx-0" id="footer">
-        <div class="col-md-3 text-center py-3 text-sm-left">
+        <div class="col-md-3 text-center py-3 text-md-left">
             <h5>
                 Quick Links
             </h5>

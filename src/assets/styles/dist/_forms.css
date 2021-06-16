@@ -11,6 +11,9 @@
   border-bottom: 1px solid #6247aa;
   color: #f7f7f9 !important;
 }
+.form-create-field::placeholder {
+  color: #cfcfcf;
+}
 .form-create-field:focus {
   background: transparent;
 }

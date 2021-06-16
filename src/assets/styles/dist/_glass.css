@@ -2,15 +2,10 @@
   font-size: 16px;
 }
 
-.gradient {
-  background-color: #4158D0;
-  background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-}
-
 .glass-wrapper {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 100%;
 }
 .glass-inner {
@@ -21,7 +16,7 @@
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   z-index: 10;
 }
@@ -41,10 +36,20 @@
   height: 20rem;
   width: 20rem;
 }
+.glass-circle-lg {
+  height: 25rem;
+  width: 25rem;
+}
 .glass-circle-1 {
   background: linear-gradient(148.21deg, #FFCC70 16.45%, rgba(255, 255, 255, 0) 55.84%), linear-gradient(221.65deg, #C850C0 23.85%, rgba(255, 255, 255, 0) 76.46%), linear-gradient(82.01deg, rgba(65, 88, 208, 0.575817) 108.71%, #4158D0 151.6%, rgba(65, 88, 208, 0) 151.6%);
 }
 .glass-circle-2 {
   background: linear-gradient(148.21deg, #FFCC70 16.45%, rgba(255, 255, 255, 0) 55.84%), linear-gradient(221.65deg, #C850C0 23.85%, rgba(255, 255, 255, 0) 76.46%), linear-gradient(82.01deg, rgba(65, 88, 208, 0.575817) 108.71%, #4158D0 151.6%, rgba(65, 88, 208, 0) 151.6%);
   transform: rotate(135deg);
+}
+.glass-circle-centre {
+  top: 50%;
+  left: 50%;
+  margin-top: -12.5rem;
+  margin-left: -12.5rem;
 }

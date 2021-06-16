@@ -17,9 +17,10 @@
         </div>        
         <div :class="['col-md-8', 'my-3', blog.blocks.length > 0 ? 'mr-auto' : 'mx-auto']">
             <b-form class="form-create-wrapper" @submit.prevent="createBlog" @reset="onReset" >
-                <div :class="['form-create-title-wrapper', 'my-3', blog.image.url ? 'blogs-img-wrapper': '', 'glass-wrapper']" :style="`background-image: url(${blog.image.url})`">                    
-                    <div class="form-create-title-input glass-inner">
-                        <b-form-group >                                              
+                <div :class="['form-create-title-wrapper', 'my-3', blog.image.url ? 'blogs-create-img-wrapper': '', 'glass-wrapper']" :style="`background-image: url(${blog.image.url})`">                    
+                    <div v-if="!blog.image.url" :class="['glass-circle glass-circle-2 glass-circle-lg glass-circle-centre ']"></div>                                    
+                    <div :class="['form-create-title-input', blog.image.url ? 'd-flex m-auto' : 'glass-inner']">
+                        <b-form-group class="text-wrapper" >                                              
                             <b-form-input type="text" required class="form-create-field text-center form-create-text form-control-lg" :disabled="disabled" id="title" v-model="blog.title" placeholder="Enter the blog title" />                                                                                
                             <div class="w-100 text-center">
                                 <div class="badge badge-suggestions badge-pill badge-accent mt-4 " v-if="blog.category">                                                                                
@@ -469,8 +470,8 @@ export default {
 
     mounted() {
         this.blog.author = 'ishanpsahota'
-        let d = new Date(Date.now())
-        this.blog.date = d.getDay() + '/' + d.getMonth() + '/' + d.getFullYear()
+        let d = new Date()
+        this.blog.date = d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear()        
     }
 }
 </script>

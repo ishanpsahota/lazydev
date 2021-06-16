@@ -15,13 +15,17 @@ html[data-theme="dark"] {
 html {
     
     &::-webkit-scrollbar {
-        width: 1rem;
-        margin: 1rem;
+        width: 0.5rem;
+        // margin: 1rem;
+
+        &:hover {
+            
+        }
     }
 
     &::-webkit-scrollbar-track {
         background: $black;
-        border-radius: 10px;        
+        border-radius: $border-radius;        
     }
 
     &::-webkit-scrollbar-thumb {
@@ -29,7 +33,13 @@ html {
         background: $scroll-track-color;
         box-shadow: $shadow-scroll;
         border-radius: 50px;
-        width: 0.5rem;
+        // width: 0.1rem;
+
+        &:hover {
+            background: $blue-md;
+        }
+
+        transition: background 0.5s linear;
     }
 }
 

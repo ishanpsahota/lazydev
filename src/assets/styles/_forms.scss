@@ -16,7 +16,9 @@
             background: transparent !important;
             border: 0;
             border-bottom: 1px solid $purple;
-            
+            &::placeholder {
+                color: $grey;
+            }
             color: $light !important;
 
             &:focus {

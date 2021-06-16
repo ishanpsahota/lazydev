@@ -3,12 +3,15 @@
         <nav class="navbar navbar-expand-sm border-sm border-bottom border-black-light">
             <!-- <a class="navbar-brand text-gradient text-sm text-800" href="/"> laazzzyyyy.dev </a> -->
             <router-link to="/" class="navbar-brand text-gradient text-sm text-800"> laazzzyyyy.dev </router-link>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-                aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler d-lg-none bg-accent" type="button" data-toggle="collapse" data-target="#nav_dropdown" aria-controls="nav_dropdown"
+                aria-expanded="false" aria-label="Toggle navigation"
+                @click="nav_show = !nav_show"
+                >
+                <b-icon-caret-left :class="[nav_show ? 'rotate-right': '']" />
+                
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavId">
-                <ul class="navbar-nav ml-auto mt-lg-0">
+            <div class="collapse navbar-collapse" id="nav_dropdown">
+                <ul class="navbar-nav ml-auto text-center text-md-left mt-lg-0">
                     <!-- <li class="nav-item"> -->
                         <!-- <a class="nav-link" href="#"><b-icon-house> </b-icon-house>       </a> -->
                         <!-- <router-link to="/home" class="nav-link"> 
@@ -68,7 +71,8 @@
 import { BIconGrid, BIconGridFill, BIconSearch, 
         BIconPerson, BIconPencilSquare, BForm, 
         BFormGroup, BFormInput, BInputGroup,
-        BInputGroupAppend
+        BInputGroupAppend, BIconCaretDown, BIconCaretDownFill,
+        BIconCaretLeft, BIconCaretLeftFill
         } from 'bootstrap-vue'
 
 export default {
@@ -77,12 +81,14 @@ export default {
         BIconGrid, BIconGridFill, BIconSearch,
         BIconPerson, BIconPencilSquare, BInputGroup,
         BInputGroupAppend, BForm, BFormGroup, 
-        BFormInput
+        BFormInput, BIconCaretDown, BIconCaretDownFill,
+        BIconCaretLeft, BIconCaretLeftFill
     },
 
     data() {
         return {
-            search_query: ""
+            search_query: "",
+            nav_show: false
         }
     },
 
