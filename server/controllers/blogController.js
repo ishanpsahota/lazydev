@@ -179,7 +179,7 @@ exports.getSimilarBlogs = async (req, res) => {
         // let type = req.query.type
         let phrase = req.query.phrase     
         let match = req.query.match           
-        let blogs = await Blog.find({'category': phrase.toLowerCase(), 'title': { $ne: utils.getTitleforSearch(match) }}, ['title', 'category', 'image'], { sort: { date: -1 } })
+        let blogs = await Blog.find({'category': phrase.toLowerCase(), 'title': { $ne: utils.getTitleforSearch(match) }}, ['title', 'category', 'image'], { sort: { date: -1 } }).limit(10)
         return res.json({blogs})                
     }
     catch(err) {
@@ -191,13 +191,14 @@ exports.getTrending = async (req, res) => {
     try {
 
         let category = req.query.category
+        let limit = req.query.limit        
 
         var blogs = ''
 
         if(category) {
-            blogs = await Blog.find({'category': category}, ['title', 'image', 'category'], {sort: { hits: -1 }})
+            blogs = await Blog.find({'category': category}, ['title', 'image', 'category'], {sort: { hits: -1 }}).limit(limit ? limit : '')
         }
-        else blogs = await Blog.find(null, ['title', 'image', 'category'], {sort: { hits: -1 }})
+        else blogs = await Blog.find(null, ['title', 'image', 'category'], {sort: { hits: -1 }}).limit(limit ? Number(limit) : '')        
 
         return res.json({blogs})
     }
@@ -255,7 +256,10 @@ exports.search = async (req, res) => {
 exports.getNew = async (req, res) => {
 
     try {
-        let blogs = await Blog.find(null, [ 'title', 'image', 'category'], { $sort: { date: -1 } })
+
+        let limit = req.query.limit
+
+        let blogs = await Blog.find(null, [ 'title', 'image', 'category'], { $sort: { date: -1 } }).limit(limit ? Number(limit) : '')
         return res.json({blogs})
     }
     catch(error) {

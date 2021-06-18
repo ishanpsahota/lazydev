@@ -28,6 +28,9 @@
 .blogs-item-img-wrapper:hover {
   background-size: 115% auto;
 }
+.blogs-item-intro-grid {
+  display: grid;
+}
 .blogs-view-hero-img-wrapper {
   background-attachment: scroll;
   background-repeat: no-repeat;

@@ -15,6 +15,15 @@
 .animation-bottom-left {
   animation: bottom-left 7.5s ease-in-out infinite;
 }
+.animation-fade-show {
+  animation: fade-show ease 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.highlight {
+  animation: changeBg 2s ease;
+}
 
 @keyframes rotate {
   from {
@@ -63,6 +72,14 @@
   100% {
     background-color: #121212;
     box-shadow: none;
+  }
+}
+@keyframes fade-show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 @media screen and (max-width: 600px) {
@@ -214,7 +231,9 @@
 .badge-suggestions {
   font-size: 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.badge-suggestions:hover {
+  background-color: #3f84e5 !important;
 }
 .badge-primary {
   background-color: #e86a92 !important;
@@ -258,6 +277,9 @@
   transition: all 0.15s ease;
 }
 
+.suggestions-pill-container {
+  max-height: 5rem;
+}
 .suggestions-pill-wrapper {
   overflow-x: scroll;
 }
@@ -295,10 +317,6 @@
 }
 .index-list-item a {
   color: #e86a92 !important;
-}
-
-.highlight {
-  animation: changeBg 2s ease;
 }
 
 .footer {
@@ -366,17 +384,35 @@
   min-height: 30vh;
 }
 
-.fade {
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.fade-show {
-  opacity: 1;
-}
-
 .rotate-left {
   transform: rotateZ(90deg);
 }
 .rotate-right {
   transform: rotateZ(-90deg);
+}
+
+.full-view {
+  min-height: 50rem;
+}
+
+.share-links {
+  display: flex;
+}
+.share-links ul {
+  margin: auto;
+}
+.share-icon {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.25rem;
+  background-color: #202124;
+  transition: background-color 0.35s ease;
+}
+.share-icon:hover {
+  background-color: #6247aa;
 }

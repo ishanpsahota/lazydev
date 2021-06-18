@@ -41,6 +41,24 @@
                 transition: background-size 0.5s ease;
             }      
         }
+
+        &-intro {
+
+            &-container {
+
+            }
+
+            &-grid {
+                
+                display: grid;
+
+            }
+
+        }
+
+        &-grid {
+            
+        }
     }
 
     &-view {

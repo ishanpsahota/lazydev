@@ -1,8 +1,8 @@
 const axios = require('axios')
 
 // const url =  process.env.API_URL ? process.env.API_URL : 'http://localhost:8081/api/v1'
-// const url = 'http://localhost:8081/api/v1'
-const url = 'https://lazydevapi.herokuapp.com/api/v1'
+const url = 'http://localhost:8081/api/v1'
+// const url = 'https://lazydevapi.herokuapp.com/api/v1'
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = "*"
 axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
@@ -99,9 +99,9 @@ export default {
         })        
     },
 
-    getSimilarBlogs(phrase, match) {
+    getSimilarBlogs(phrase, match, limit) {
         return new Promise((resolve, reject) => {
-            axios.get(this.getLinks().getSimilarBlogs + `?phrase=${phrase}&match=${match}`)
+            axios.get(this.getLinks().getSimilarBlogs + `?phrase=${phrase}&match=${match}` + (limit ? `&limit=${limit}` : ''))
             .then(res => {
                 resolve(res.data)
             }).catch(err => {
@@ -110,12 +110,12 @@ export default {
         })
     },
 
-    getTrendingBlogs(category) {
+    getTrendingBlogs(category, limit) {
 
         if(category)
         {
             return new Promise((resolve, reject) => {
-                axios.get(this.getLinks().getTrendingBlogs + `?category=${phrase}`)
+                axios.get(this.getLinks().getTrendingBlogs + `?category=${category}` + (limit ? `&limit=${limit}` : ''))
                 .then(res => {
                     resolve(res.data)
                 }).catch(err => {
@@ -124,7 +124,7 @@ export default {
             })
         }
         else return new Promise((resolve, reject) => {
-            axios.get(this.getLinks().getTrendingBlogs)
+            axios.get(this.getLinks().getTrendingBlogs + (limit ? `?limit=${limit}` : ''))
             .then(res => {
                 resolve(res.data)
             }).catch(err => {
@@ -156,9 +156,9 @@ export default {
         })
     },
 
-    getNew() {
+    getNew(limit) {
         return new Promise((resolve, reject) => {
-            axios.get(this.getLinks().getNew)
+            axios.get(this.getLinks().getNew + (limit ? `?limit=${limit}` : ''))
             .then(res => {
                 resolve(res.data)
             }).catch(err => {

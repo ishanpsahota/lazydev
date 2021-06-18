@@ -1,10 +1,10 @@
 <template>
-      <div class="row mx-0 p-3 blogs-create-wrapper w-100">                                    
+      <div class="row mx-0 p-1 p-md-3 blogs-create-wrapper w-100">                                    
         <h1 class="display-4 mx-auto " v-if="!preview_mode" >
             New Blog 
         </h1>        
         <hr v-if="!preview_mode" class="divider w-100" />
-        <div :class="['col-md-2', blog.blocks.length > 0 ? 'd-md-block' : 'd-none' ]">
+        <div :class="['col-md-2 d-none', blog.blocks.length > 0 ? 'd-md-block' : '' ]">
             <div class="sticky-top my-auto pt-5">
                 <ul class="index-list">
                 <li class="index-list-item" v-for="(block, i) in blog.blocks" :key="i"> 
@@ -101,7 +101,7 @@
                     </div>
                 </template>
                 <template v-if="!preview_mode">
-                    <b-form-group class="my-2 p-4 rounded border border-primary" >                                               
+                    <b-form-group class="my-2 p-md-4 p-3 rounded border border-primary" >                                               
                         <b-form-group class="py-1">                          
                             <!-- <label for="blockTitle">Block Title</label> -->
                             <b-form-input type="text" class="form-create-field form-create-text form-control-lg" :disabled="disabled" id="blockTitle" v-model="tempBlock.heading" placeholder="Enter the block title" />                                                    

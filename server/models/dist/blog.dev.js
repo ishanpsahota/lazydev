@@ -11,6 +11,7 @@ var blogSchema = new mongoose.Schema({
   category: {
     type: String
   },
+  intro: String,
   author: String,
   date: {
     type: Date,

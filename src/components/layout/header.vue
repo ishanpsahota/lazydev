@@ -23,16 +23,17 @@
                     <!-- </li> -->
                     <li class="nav-item">
                         <router-link to="/blogs/create" class="nav-link"> 
-                            <b-icon-pencil-square />                            
+                            <b-icon-pencil-square class="clickable" />  
+                            <span class="d-block d-sm-none my-1"> New Blog </span>                          
                         </router-link>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" target="_blank"  href="https://ishanpsahota.netlify.app">
-                            <b-icon-person />
+                            <b-icon-emoji-laughing class="clickable" /> <span class="d-block d-sm-none my-1"> Creator </span>                          
 
                         </a>                        
                     </li>
-                    <li class="nav-item d-flex">
+                    <li class="nav-item d-flex justify-content-center">
                         <!-- <a class="nav-link" href="#">Link</a> -->
                         <form action="/search" method="get" >                        
                             <b-form-group class="m-auto">
@@ -72,7 +73,7 @@ import { BIconGrid, BIconGridFill, BIconSearch,
         BIconPerson, BIconPencilSquare, BForm, 
         BFormGroup, BFormInput, BInputGroup,
         BInputGroupAppend, BIconCaretDown, BIconCaretDownFill,
-        BIconCaretLeft, BIconCaretLeftFill
+        BIconCaretLeft, BIconCaretLeftFill, BIconEmojiLaughing
         } from 'bootstrap-vue'
 
 export default {
@@ -82,7 +83,8 @@ export default {
         BIconPerson, BIconPencilSquare, BInputGroup,
         BInputGroupAppend, BForm, BFormGroup, 
         BFormInput, BIconCaretDown, BIconCaretDownFill,
-        BIconCaretLeft, BIconCaretLeftFill
+        BIconCaretLeft, BIconCaretLeftFill,
+        BIconEmojiLaughing
     },
 
     data() {

@@ -395,7 +395,7 @@ exports.getSimilarBlogs = function _callee9(req, res) {
             sort: {
               date: -1
             }
-          }));
+          }).limit(10));
 
         case 5:
           blogs = _context9.sent;
@@ -419,63 +419,64 @@ exports.getSimilarBlogs = function _callee9(req, res) {
 };
 
 exports.getTrending = function _callee10(req, res) {
-  var category, blogs;
+  var category, limit, blogs;
   return regeneratorRuntime.async(function _callee10$(_context10) {
     while (1) {
       switch (_context10.prev = _context10.next) {
         case 0:
           _context10.prev = 0;
           category = req.query.category;
+          limit = req.query.limit;
           blogs = '';
 
           if (!category) {
-            _context10.next = 9;
+            _context10.next = 10;
             break;
           }
 
-          _context10.next = 6;
+          _context10.next = 7;
           return regeneratorRuntime.awrap(Blog.find({
             'category': category
           }, ['title', 'image', 'category'], {
             sort: {
               hits: -1
             }
-          }));
+          }).limit(limit ? limit : ''));
 
-        case 6:
+        case 7:
           blogs = _context10.sent;
-          _context10.next = 12;
+          _context10.next = 13;
           break;
 
-        case 9:
-          _context10.next = 11;
+        case 10:
+          _context10.next = 12;
           return regeneratorRuntime.awrap(Blog.find(null, ['title', 'image', 'category'], {
             sort: {
               hits: -1
             }
-          }));
-
-        case 11:
-          blogs = _context10.sent;
+          }).limit(limit ? Number(limit) : ''));
 
         case 12:
+          blogs = _context10.sent;
+
+        case 13:
           return _context10.abrupt("return", res.json({
             blogs: blogs
           }));
 
-        case 15:
-          _context10.prev = 15;
+        case 16:
+          _context10.prev = 16;
           _context10.t0 = _context10["catch"](0);
           return _context10.abrupt("return", res.json({
             err: _context10.t0
           }));
 
-        case 18:
+        case 19:
         case "end":
           return _context10.stop();
       }
     }
-  }, null, null, [[0, 15]]);
+  }, null, null, [[0, 16]]);
 };
 
 exports.search = function _callee11(req, res) {
@@ -557,34 +558,35 @@ exports.search = function _callee11(req, res) {
 };
 
 exports.getNew = function _callee12(req, res) {
-  var blogs;
+  var limit, blogs;
   return regeneratorRuntime.async(function _callee12$(_context12) {
     while (1) {
       switch (_context12.prev = _context12.next) {
         case 0:
           _context12.prev = 0;
-          _context12.next = 3;
+          limit = req.query.limit;
+          _context12.next = 4;
           return regeneratorRuntime.awrap(Blog.find(null, ['title', 'image', 'category'], {
             $sort: {
               date: -1
             }
-          }));
+          }).limit(limit ? Number(limit) : ''));
 
-        case 3:
+        case 4:
           blogs = _context12.sent;
           return _context12.abrupt("return", res.json({
             blogs: blogs
           }));
 
-        case 7:
-          _context12.prev = 7;
+        case 8:
+          _context12.prev = 8;
           _context12.t0 = _context12["catch"](0);
           return _context12.abrupt("return", res.json(_context12.t0));
 
-        case 10:
+        case 11:
         case "end":
           return _context12.stop();
       }
     }
-  }, null, null, [[0, 7]]);
+  }, null, null, [[0, 8]]);
 };

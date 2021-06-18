@@ -23,7 +23,25 @@
             &nbsp; {{getDate(blog.date, false)}}
           </router-link>
         </small>        
-      </div>      
+      </div>
+      <div class="col-12 ">
+        <div class="share-links">
+          <ul class="list-group list-group-horizontal mx-auto">
+            <li class="nav-link share-icon" title="Copy to Clipboard!" @click="share('copy')">
+              <b-icon-link />
+            </li>
+            <!-- <li class="nav-link share-icon" title="Share to Facebook!" @click="share('facebook')">
+              <b-icon-facebook />
+            </li>
+            <li class="nav-link share-icon" title="Share to Instagram!" @click="share('instagram')">
+              <b-icon-instagram />
+            </li>
+            <li class="nav-link share-icon" title="Share to Twitter!" @click="share('twitter')">
+              <b-icon-twitter />
+            </li> -->
+          </ul>
+        </div>        
+      </div>
     </div>      
 	  <div class="blog-view-main w-100" v-if="blog">
       <div class="row w-100 mx-0 ">
@@ -58,7 +76,7 @@
           </div>                 
           <!-- <blog-index-list :blocks="blog.blocks" :liked="blog.liked" /> -->
         </div>
-        <div class="col-md-6 col-lg-8 pt-5 blog-view-content-wrapper">
+        <div class="col-md-7 col-lg-8 pt-5 blog-view-content-wrapper">
           <div class="block-wrapper" v-for="(block, i) in blog.blocks" :key="i" :id="getId(block.heading)" :ref="getId(block.heading)">
             <h2 class="">
               {{block.heading}}
@@ -76,7 +94,7 @@
             </div>
           </div>
         </div>
-        <div class="col-md-3 col-lg-2 blog-view-ad-wrapper">
+        <div class="col-md-2 col-lg-2 blog-view-ad-wrapper">
           ads here
         </div>
       </div>
@@ -103,7 +121,8 @@
 <script>
 import { BIconCalendar2, BIconBookmark, BIconBookmarkFill, 
         BIconHeart, BIconHeartFill, BSpinner, BAlert,
-        
+        BIconFacebook, BIconLink, BIconTwitter,
+        BIconInstagram
       } from 'bootstrap-vue'
 import BlogItem from '../../blog-item-content/BlogItem.vue'
 import GlassDiv from '../../glass-item/GlassDiv.vue'
@@ -119,13 +138,13 @@ export default {
     GlassDiv, 
     BlogItem, 
     BIconCalendar2, 
-    BlogImage, 
+    BlogImage, BIconLink,
     BIconBookmark, BIconBookmarkFill, 
     BIconHeart, BIconHeartFill,
-    BlogIndexList,    
+    BlogIndexList, BIconTwitter,
     BSpinner, BlogHeroImage,
-    BAlert,
-    BlogContainer
+    BAlert, BIconInstagram,
+    BlogContainer, BIconFacebook
   },
   data() {
     return {
@@ -262,6 +281,26 @@ export default {
 
     renderText(text) {
       return text.replace(/\n/g, "<br />");
+    },
+
+    share(type) {
+
+      let text = window.location.href;
+
+      if(type == 'copy') {          
+          navigator.clipboard.writeText(text)
+            .then(() => {
+              alert('Text copied to clipboard', );
+            })
+            .catch(err => {
+              alert('Error in copying text: ', err);
+            });        
+      }
+      else {
+        // window.location = `${type}://${text}`
+        window.open(`${type}://${text}`, '_blank')
+      }
+
     }
     
   },

@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 
 var axios = require('axios'); // const url =  process.env.API_URL ? process.env.API_URL : 'http://localhost:8081/api/v1'
-// const url = 'http://localhost:8081/api/v1'
 
 
-var url = 'https://lazydevapi.herokuapp.com/api/v1';
+var url = 'http://localhost:8081/api/v1'; // const url = 'https://lazydevapi.herokuapp.com/api/v1'
+
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
 axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 var links = {
@@ -99,30 +99,30 @@ var _default = {
       });
     });
   },
-  getSimilarBlogs: function getSimilarBlogs(phrase, match) {
+  getSimilarBlogs: function getSimilarBlogs(phrase, match, limit) {
     var _this7 = this;
 
     return new Promise(function (resolve, reject) {
-      axios.get(_this7.getLinks().getSimilarBlogs + "?phrase=".concat(phrase, "&match=").concat(match)).then(function (res) {
+      axios.get(_this7.getLinks().getSimilarBlogs + "?phrase=".concat(phrase, "&match=").concat(match) + (limit ? "&limit=".concat(limit) : '')).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);
       });
     });
   },
-  getTrendingBlogs: function getTrendingBlogs(category) {
+  getTrendingBlogs: function getTrendingBlogs(category, limit) {
     var _this8 = this;
 
     if (category) {
       return new Promise(function (resolve, reject) {
-        axios.get(_this8.getLinks().getTrendingBlogs + "?category=".concat(phrase)).then(function (res) {
+        axios.get(_this8.getLinks().getTrendingBlogs + "?category=".concat(category) + (limit ? "&limit=".concat(limit) : '')).then(function (res) {
           resolve(res.data);
         })["catch"](function (err) {
           reject(err);
         });
       });
     } else return new Promise(function (resolve, reject) {
-      axios.get(_this8.getLinks().getTrendingBlogs).then(function (res) {
+      axios.get(_this8.getLinks().getTrendingBlogs + (limit ? "?limit=".concat(limit) : '')).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);
@@ -148,11 +148,11 @@ var _default = {
       });
     });
   },
-  getNew: function getNew() {
+  getNew: function getNew(limit) {
     var _this10 = this;
 
     return new Promise(function (resolve, reject) {
-      axios.get(_this10.getLinks().getNew).then(function (res) {
+      axios.get(_this10.getLinks().getNew + (limit ? "?limit=".concat(limit) : '')).then(function (res) {
         resolve(res.data);
       })["catch"](function (err) {
         reject(err);

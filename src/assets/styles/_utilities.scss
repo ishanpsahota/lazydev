@@ -210,7 +210,13 @@
     
     &-suggestions {
         font-size: 0.9rem ; 
-        border: 1px solid rgba( 255, 255, 255, 0.18 );border: 1px solid rgba( 255, 255, 255, 0.18 );
+        // border: 1px solid rgba( 255, 255, 255, 0.18 );
+        border: $border-light;
+
+        &:hover {
+            background-color: $blue !important;
+        }
+
     }
 
     &-primary {
@@ -275,6 +281,11 @@
 
 .suggestions {
     &-pill {
+
+        &-container {
+            max-height: 5rem;
+        }
+
         &-wrapper {
             overflow-x: scroll;
 
@@ -334,11 +345,7 @@
 
 }
 
-.highlight {
 
-    animation: changeBg 2s ease;
-
-}
 
 .footer {
     border-top: 1px solid $black-light;
@@ -441,15 +448,6 @@
 
 }
 
-.fade {
-    opacity: 0;
-
-    &-show {
-        opacity: 1;
-    }
-
-    transition: opacity 0.5s ease;
-}
 
 .rotate {
 
@@ -461,4 +459,38 @@
         transform: rotateZ(-90deg);
     }
 
+}
+
+.full-view {
+    min-height: 50rem;
+}
+
+.share  {
+
+    &-links {
+        display: flex;
+        
+        ul {
+            margin: auto;
+        }
+
+    }
+
+    &-icon {
+        border: $border-light;
+        border-radius: 50%;
+        height: 3rem;
+        width: 3rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0.25rem;
+        background-color: $black-light;
+
+        &:hover {
+            background-color: $purple;
+        }
+
+        transition: background-color 0.35s ease;
+    }
 }

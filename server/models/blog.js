@@ -12,6 +12,8 @@ const blogSchema = new mongoose.Schema({
         type: String
     },
 
+    intro: String,
+
     author: String,
 
     date: {

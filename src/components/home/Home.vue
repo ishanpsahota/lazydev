@@ -65,8 +65,9 @@ export default {
         },
 
         getTrending() {
-          api.getTrendingBlogs()
+          api.getTrendingBlogs(null, 10)
           .then(res => {
+            // console.log(res)
             setTimeout(() => {
               this.loading.trending = false
               this.blogs.trending = res.blogs
@@ -88,7 +89,7 @@ export default {
         },
 
         getNew() {
-          api.getNew()
+          api.getNew(10)
           .then(res => {
             setTimeout(() => {
               this.loading.new = false
