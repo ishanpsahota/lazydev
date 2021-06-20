@@ -3,32 +3,33 @@
         <div class="row mx-0 p-3">
             <h1> Testing components </h1>
             <div class="row mx-0 w-100">                
-                  <gradient-container />                      
+                <blogs-item-with-intro  />          
             </div>            
         </div>
     </section>
 </template>
 
 <script>
-import GradientContainer from '../../components/gradientContainer/gradientContainer.vue'
+import BlogsItemWithIntro from '../../components/blogs-component/blogs-item-with-intro/BlogsItemWithIntro.vue'
+
 
 export default {
     name: 'test',
     components: {
-        GradientContainer,
+        BlogsItemWithIntro
+        
         
     },
     data() {
         return {
-            rawHtml: ''
+            
         }
     },
     methods: {
         
     },
 
-    mounted() {
-        this.rawHtml = '<h1> testing </h1>'
+    mounted() {        
         
     }
 }

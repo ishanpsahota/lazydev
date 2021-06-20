@@ -227,10 +227,14 @@
 .border-primary {
   border-color: #e86a92 !important;
 }
+.border-dark-theme {
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+}
 
 .badge-suggestions {
   font-size: 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
+  text-transform: capitalize;
 }
 .badge-suggestions:hover {
   background-color: #3f84e5 !important;

@@ -8,9 +8,9 @@
                 <li class="index-list-item">
                     <router-link to="/blogs"> Blogs </router-link>
                 </li>
-                <li class="index-list-item">
+                <!-- <li class="index-list-item">
                     <router-link to="/fun"> Animation </router-link>
-                </li>
+                </li> -->
                 <li class="index-list-item">
                     <router-link to="/search"> Search </router-link>
                 </li>

@@ -1,0 +1,33 @@
+:root {
+  font-size: 16px;
+}
+
+.grid-blogs-intro-wrapper {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 1rem;
+  justify-content: center;
+}
+.grid-blogs-intro-item {
+  background: transparent;
+  width: 85%;
+  margin: 0 auto;
+  text-align: center;
+  transition: border 0.25s ease;
+}
+.grid-blogs-intro-item:hover {
+  border: 0.25px solid #6247aa;
+}
+.grid-blogs-intro-item .glass-inner {
+  min-height: 10rem;
+}
+.grid-blogs-intro-item .glass-wrapper {
+  margin-bottom: 1rem;
+}
+.grid-blogs-intro-item img {
+  min-height: 10rem;
+  max-height: 15rem;
+  max-width: 100%;
+  object-fit: cover;
+}

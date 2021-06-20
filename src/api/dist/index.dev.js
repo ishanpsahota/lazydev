@@ -102,6 +102,7 @@ var _default = {
   getSimilarBlogs: function getSimilarBlogs(phrase, match, limit) {
     var _this7 = this;
 
+    // console.log(phrase, match, limit)
     return new Promise(function (resolve, reject) {
       axios.get(_this7.getLinks().getSimilarBlogs + "?phrase=".concat(phrase, "&match=").concat(match) + (limit ? "&limit=".concat(limit) : '')).then(function (res) {
         resolve(res.data);

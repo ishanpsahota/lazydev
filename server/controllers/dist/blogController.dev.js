@@ -376,7 +376,7 @@ exports.getCategories = function _callee8(req, res) {
 };
 
 exports.getSimilarBlogs = function _callee9(req, res) {
-  var phrase, match, blogs;
+  var phrase, match, limit, blogs;
   return regeneratorRuntime.async(function _callee9$(_context9) {
     while (1) {
       switch (_context9.prev = _context9.next) {
@@ -385,37 +385,62 @@ exports.getSimilarBlogs = function _callee9(req, res) {
           // let type = req.query.type
           phrase = req.query.phrase;
           match = req.query.match;
-          _context9.next = 5;
+          limit = req.query.limit;
+          blogs = ''; // console.log(phrase, match, limit)
+
+          if (!match) {
+            _context9.next = 11;
+            break;
+          }
+
+          _context9.next = 8;
           return regeneratorRuntime.awrap(Blog.find({
             'category': phrase.toLowerCase(),
             'title': {
               $ne: utils.getTitleforSearch(match)
             }
-          }, ['title', 'category', 'image'], {
+          }, ['title', 'category', 'image', 'intro', 'date'], {
             sort: {
               date: -1
             }
-          }).limit(10));
+          }).limit(limit ? Number(limit) : ''));
 
-        case 5:
+        case 8:
           blogs = _context9.sent;
+          _context9.next = 14;
+          break;
+
+        case 11:
+          _context9.next = 13;
+          return regeneratorRuntime.awrap(Blog.find({
+            'category': phrase.toLowerCase()
+          }, ['title', 'category', 'image', 'intro', 'date'], {
+            sort: {
+              date: -1
+            }
+          }).limit(limit ? Number(limit) : ''));
+
+        case 13:
+          blogs = _context9.sent;
+
+        case 14:
           return _context9.abrupt("return", res.json({
             blogs: blogs
           }));
 
-        case 9:
-          _context9.prev = 9;
+        case 17:
+          _context9.prev = 17;
           _context9.t0 = _context9["catch"](0);
           return _context9.abrupt("return", res.json({
             err: _context9.t0
           }));
 
-        case 12:
+        case 20:
         case "end":
           return _context9.stop();
       }
     }
-  }, null, null, [[0, 9]]);
+  }, null, null, [[0, 17]]);
 };
 
 exports.getTrending = function _callee10(req, res) {
@@ -450,7 +475,7 @@ exports.getTrending = function _callee10(req, res) {
 
         case 10:
           _context10.next = 12;
-          return regeneratorRuntime.awrap(Blog.find(null, ['title', 'image', 'category'], {
+          return regeneratorRuntime.awrap(Blog.find(null, ['title', 'image', 'category', 'intro', 'date'], {
             sort: {
               hits: -1
             }

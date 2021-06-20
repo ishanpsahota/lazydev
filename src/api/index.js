@@ -100,6 +100,7 @@ export default {
     },
 
     getSimilarBlogs(phrase, match, limit) {
+        // console.log(phrase, match, limit)
         return new Promise((resolve, reject) => {
             axios.get(this.getLinks().getSimilarBlogs + `?phrase=${phrase}&match=${match}` + (limit ? `&limit=${limit}` : ''))
             .then(res => {

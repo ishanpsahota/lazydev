@@ -1,9 +1,14 @@
 <template>
-  <div class="row mx-0 p-2 mt-3 blogs-view-container">
-    <div class="row w-100 mx-0 p-3 d-flex" v-if="loader.blog">
-      <b-spinner label="Spinning" class="m-auto"/>
+  <div class="row mx-0 p-2 mt-3 full-view blogs-view-container">
+    <div class="row w-100 p-3 m-auto text-center" v-if="loader.blog">
+      <flower-spinner
+        :animation-duration="2500"
+        :size="70"
+        color="#ff1d5e"
+        class="mx-auto"
+      />
     </div>
-    <div class="blogs-view-header col-12 p-0 m-0 no-gutters" v-if="blog">      
+    <div class="blogs-view-header col-12 p-0 m-0 animation-fade-show no-gutters" v-if="blog">      
       <div class="col-xl-6 mx-auto col-12" >
         <div  class="blogs-view-hero-wrapper m-auto">
           <!-- <blog-item v-if="blog.image.url" :category="blog.category" :image="blog.image.url" :title="blog.title"  />           -->
@@ -28,7 +33,7 @@
         <div class="share-links">
           <ul class="list-group list-group-horizontal mx-auto">
             <li class="nav-link share-icon" title="Copy to Clipboard!" @click="share('copy')">
-              <b-icon-link />
+              <b-icon-link class="clickable" />
             </li>
             <!-- <li class="nav-link share-icon" title="Share to Facebook!" @click="share('facebook')">
               <b-icon-facebook />
@@ -106,7 +111,12 @@
     </div>
     <div class="blog-view-recommended w-100">
       <div class="row w-100 mx-0 p-3 d-flex" v-if="loader.similar">
-        <b-spinner label="Spinning" class="m-auto"/>
+        <flower-spinner
+          :animation-duration="2500"
+          :size="50"
+          color="#ff1d5e"
+          class="mx-auto"
+        />
       </div>
       <blog-container v-if="similar.length > 0" title="similar articles" :blogs="similar" />
       <div v-if="similar == null" class="alert bg-blue-md col-12 col-md-3 text-center mx-auto  " role="alert">
@@ -119,6 +129,8 @@
 </template>
 
 <script>
+
+import { FlowerSpinner } from 'epic-spinners'
 import { BIconCalendar2, BIconBookmark, BIconBookmarkFill, 
         BIconHeart, BIconHeartFill, BSpinner, BAlert,
         BIconFacebook, BIconLink, BIconTwitter,
@@ -136,7 +148,7 @@ export default {
   name: 'BlogView',
   components: { 
     GlassDiv, 
-    BlogItem, 
+    BlogItem, FlowerSpinner,
     BIconCalendar2, 
     BlogImage, BIconLink,
     BIconBookmark, BIconBookmarkFill, 
@@ -236,8 +248,12 @@ export default {
           // console.log('h')
         }
         else {
-          this.loader.blog = false
-          this.blog = res.blog         
+
+          setTimeout(() => {
+            this.loader.blog = false
+            this.blog = res.blog      
+          }, 150);
+               
         }
 
          setTimeout(() => {
@@ -290,7 +306,7 @@ export default {
       if(type == 'copy') {          
           navigator.clipboard.writeText(text)
             .then(() => {
-              alert('Text copied to clipboard', );
+              alert('Blog link copied to clipboard!', );
             })
             .catch(err => {
               alert('Error in copying text: ', err);

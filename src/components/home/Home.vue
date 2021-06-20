@@ -1,30 +1,46 @@
 <template>
-  <section class="home" id="home">
-    <SuggestionsPill title="suggested categories" :keywords="suggestions" />
-    <div class="row w-100 mx-0 p-2">
-      <b-spinner class="" v-if="loading.trending" />
-      <blog-container v-if="blogs.trending" title="trending articles" :blogs="blogs.trending" />
-      <div v-if="error.trending" class="alert alert-primary" role="alert">
-        <strong>{{error.trending}}</strong>
-      </div> 
+  <section class="home full-view" id="home">
+    <div class="m-auto py-5 text-center col-12" v-if="loading">
+      <flower-spinner
+          :animation-duration="2500"
+          :size="70"
+          color="#ff1d5e"          
+          class="m-auto"    
+      />
     </div>
-    <div class="row w-100 mx-0 p-2">
-      <b-spinner class="" v-if="loading.new" />
-      <blog-container v-if="blogs.new" title="new articles" :blogs="blogs.new" />
-      <div v-if="error.new" class="alert alert-primary" role="alert">
-        <strong>{{error.new}}</strong>
-      </div> 
+    <div v-else class="animation-fade-show">      
+      <SuggestionsPill title="suggested categories" :keywords="suggestions" />
+      <div class="row w-100 mx-0">        
+        <blog-container v-if="blogs.trending" title="trending articles" :blogs="blogs.trending" />
+        <div v-if="error.trending" class="alert alert-primary" role="alert">
+          <strong>{{error.trending}}</strong>
+        </div> 
+      </div>
+      <div class="row w-100 mx-0">        
+        <blog-container v-if="blogs.new" title="new articles" :blogs="blogs.new" />
+        <div v-if="error.new" class="alert alert-primary" role="alert">
+          <strong>{{error.new}}</strong>
+        </div> 
+      </div>
+      <div class="row w-100 mx-0 p-md-2 px-2">        
+        <blogs-item-with-intro :blogs="blogs.similar[0]" :title="'music-based articles'" />
+        <div v-if="error.similar" class="alert alert-primary" role="alert">
+          <strong>{{error.similar}}</strong> -->
+        </div> 
+      </div>
     </div>
   </section>
 </template>
 
 <script>
 
+import { FlowerSpinner } from 'epic-spinners'
 import BlogContainer from '../blogs-component/blog-container/BlogContainer'
 import SuggestionsPill from '../suggestions-pill/SuggestionsPill'
 import GlassDiv from '../glass-item/GlassDiv';
 import api from '../../api/index'
 import { BSpinner } from 'bootstrap-vue'
+import BlogsItemWithIntro from '../blogs-component/blogs-item-with-intro/BlogsItemWithIntro.vue'
 
 
 export default {
@@ -32,8 +48,8 @@ export default {
     components: {
       BlogContainer,
       SuggestionsPill,      
-      GlassDiv,
-      BSpinner,
+      GlassDiv, BlogsItemWithIntro,
+      BSpinner, FlowerSpinner,
       BlogContainer
     },
 
@@ -41,20 +57,19 @@ export default {
         return {                  
           blogs: {
             trending: null,
-            new: null
+            new: null,
+            similar: []
           },
           error: {
             blogs: {
               trending: false,
-              new: null
+              new: null, 
+              similar: null
             },
             suggestions: null
           },
           suggestions: null,
-          loading: {
-            trending: true,
-            new: true
-          }
+          loading: true
         }
     },
 
@@ -69,7 +84,7 @@ export default {
           .then(res => {
             // console.log(res)
             setTimeout(() => {
-              this.loading.trending = false
+              this.loading = false
               this.blogs.trending = res.blogs
             }, 500);
             
@@ -79,8 +94,8 @@ export default {
           })
         },
 
-        getSuggestions() {
-          api.getCategories()
+        async getSuggestions() {
+          await api.getCategories()
           .then(res => {
             this.suggestions = res.categories
           }).catch(err => {
@@ -92,7 +107,7 @@ export default {
           api.getNew(10)
           .then(res => {
             setTimeout(() => {
-              this.loading.new = false
+              this.loading = false
               this.blogs.new = res.blogs
             }, 500);
             
@@ -100,15 +115,37 @@ export default {
             this.error.blogs.new = err;
             this.blogs.new = null
           })
+        },
+        
+        getSimilarBlogs(phrase, limit) {
+          api.getSimilarBlogs(phrase, null, limit )
+          .then(res => {        
+            setTimeout(() => {
+              this.loading = false
+              this.blogs.similar.push(res.blogs)
+            }, 500);
+          }).catch(err => {
+            this.error.blogs.similar = err;
+            this.blogs.similar = null
+          })
+        },
+
+
+        getBlogs() {
+          this.getSuggestions()
+          this.getTrending()
+          this.getNew()
+          this.getSimilarBlogs('music', null, 1)
         }
+
+        
 
     },
 
-    created() {
+    mounted() {
 
-      this.getTrending();
-      this.getSuggestions();
-      this.getNew();
+      this.getBlogs()
+      
     },
 
 
