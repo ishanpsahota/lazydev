@@ -462,7 +462,7 @@ exports.getTrending = function _callee10(req, res) {
           _context10.next = 7;
           return regeneratorRuntime.awrap(Blog.find({
             'category': category
-          }, ['title', 'image', 'category'], {
+          }, ['title', 'image', 'category', 'intro', 'date'], {
             sort: {
               hits: -1
             }

@@ -200,7 +200,7 @@ exports.getTrending = async (req, res) => {
         var blogs = ''
 
         if(category) {
-            blogs = await Blog.find({'category': category}, ['title', 'image', 'category'], {sort: { hits: -1 }}).limit(limit ? limit : '')
+            blogs = await Blog.find({'category': category}, ['title', 'image', 'category', 'intro', 'date'], {sort: { hits: -1 }}).limit(limit ? limit : '')
         }
         else blogs = await Blog.find(null, ['title', 'image', 'category', 'intro', 'date'], {sort: { hits: -1 }}).limit(limit ? Number(limit) : '')        
 
