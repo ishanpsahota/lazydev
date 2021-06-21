@@ -1,14 +1,14 @@
 <template>
     <!-- <div class="overlay"> -->
         <div class="text-wrapper text-center">
-            <router-link class="mx-auto mt-auto blog-visit" :to="'/blogs/v/' + getTitle(title)">
-                <h4 class="text-light">
+            <router-link class="mx-auto mt-auto rt-link rt-link-light rt-link-blue-hover" :to="'/blogs/v/' + getTitle(title)">
+                <h4 class="">
                     <strong>                                    
                         {{title}}
                     </strong>
                 </h4>
             </router-link>
-            <span class="badge badge-accent mx-auto mt-auto mb-1" v-if="category"> 
+            <span class="badge badge-accent badge-category mx-auto mt-auto mb-1" v-if="category"> 
                 <router-link :to="'/search?q=' + getTitle(toLowerCase(category))" class="text-capitalize">
                     {{category}}
                 </router-link>

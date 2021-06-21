@@ -23,10 +23,7 @@
         </div> 
       </div>
       <div class="row w-100 mx-0 p-md-2 px-2">        
-        <blogs-item-with-intro :blogs="blogs.similar[0]" :title="'music-based articles'" />
-        <div v-if="error.similar" class="alert alert-primary" role="alert">
-          <strong>{{error.similar}}</strong> -->
-        </div> 
+        <blogs-item-with-intro :category="`music`" />        
       </div>
     </div>
   </section>
@@ -135,7 +132,7 @@ export default {
           this.getSuggestions()
           this.getTrending()
           this.getNew()
-          this.getSimilarBlogs('music', null, 1)
+          // this.getSimilarBlogs('music', null, 1)
         }
 
         

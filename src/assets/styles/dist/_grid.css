@@ -14,10 +14,12 @@
   width: 85%;
   margin: 0 auto;
   text-align: center;
-  transition: border 0.25s ease;
+  box-shadow: none;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
 }
 .grid-blogs-intro-item:hover {
   border: 0.25px solid #6247aa;
+  box-shadow: 5px 5px 10px 0px #000;
 }
 .grid-blogs-intro-item .glass-inner {
   min-height: 10rem;
@@ -26,8 +28,8 @@
   margin-bottom: 1rem;
 }
 .grid-blogs-intro-item img {
-  min-height: 10rem;
-  max-height: 15rem;
+  min-height: 11rem;
+  max-height: 12.5rem;
   max-width: 100%;
   object-fit: cover;
 }

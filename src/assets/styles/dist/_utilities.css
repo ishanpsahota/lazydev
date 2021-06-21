@@ -235,9 +235,16 @@
   font-size: 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.18);
   text-transform: capitalize;
+  font-weight: 500;
 }
 .badge-suggestions:hover {
-  background-color: #3f84e5 !important;
+  background-color: #e86a92 !important;
+}
+.badge-category {
+  font-weight: 500;
+}
+.badge-category:hover {
+  background-color: #6247aa !important;
 }
 .badge-primary {
   background-color: #e86a92 !important;
@@ -282,10 +289,14 @@
 }
 
 .suggestions-pill-container {
-  max-height: 5rem;
+  max-height: 6rem;
 }
 .suggestions-pill-wrapper {
   overflow-x: scroll;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.5rem;
 }
 .suggestions-pill-wrapper::-webkit-scrollbar {
   display: none;

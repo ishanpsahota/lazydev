@@ -217,11 +217,19 @@
         // border: 1px solid rgba( 255, 255, 255, 0.18 );
         border: $border-light;
         text-transform: capitalize;
+        font-weight: 500;
 
         &:hover {
-            background-color: $blue !important;
+            background-color: $primary !important;
         }
 
+    }
+
+    &-category {
+        font-weight: 500;
+        &:hover {
+            background-color: $purple !important;            
+        }
     }
 
     &-primary {
@@ -288,12 +296,17 @@
     &-pill {
 
         &-container {
-            max-height: 5rem;
+            max-height: 6rem;
+            // overflow-x: scroll;
+            // overflow-y: hidden;
         }
 
         &-wrapper {
-            overflow-x: scroll;
-
+            overflow-x: scroll;            
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: row;
+            margin-left: 0.5rem;
             &::-webkit-scrollbar {
                 display: none;
             }

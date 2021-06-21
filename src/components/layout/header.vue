@@ -21,14 +21,14 @@
                             <!-- <b-icon-grid/> -->
                         <!-- </router-link> -->
                     <!-- </li> -->
-                    <li class="nav-item">
+                    <li class="nav-item clickable">
                         <router-link to="/blogs/create" class="nav-link"> 
                             <b-icon-pencil-square class="clickable" />  
                             <span class="d-block d-sm-none my-1"> New Blog </span>                          
                         </router-link>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" target="_blank"  href="https://ishanpsahota.netlify.app">
+                        <a class="nav-link clickable" target="_blank"  href="https://ishanpsahota.netlify.app">
                             <b-icon-emoji-laughing class="clickable" /> <span class="d-block d-sm-none my-1"> Creator </span>                          
 
                         </a>                        

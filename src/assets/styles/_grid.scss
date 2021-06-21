@@ -22,15 +22,17 @@
             width: 85%;         
             margin: 0 auto;  
             text-align: center; 
-            // border: noe;
+            // border: none;
+            box-shadow: none;
 
             &:hover {
                 border: 0.25px solid $purple;
+                box-shadow: $shadow;
                 // border: $border-light;
                 // color: $purple !important;
             }
 
-            transition: border 0.25s ease;
+            transition: border 0.25s ease, box-shadow 0.25s ease;
 
             .glass
             {
@@ -44,8 +46,8 @@
             }            
 
             img {
-                min-height: 10rem;
-                max-height: 15rem;
+                min-height: 11rem;
+                max-height: 12.5rem;
                 max-width: 100%;
                 object-fit: cover;
             }
