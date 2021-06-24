@@ -1,8 +1,8 @@
 const axios = require('axios')
 
 // const url =  process.env.API_URL ? process.env.API_URL : 'http://localhost:8081/api/v1'
-const url = 'http://localhost:8081/api/v1'
-// const url = 'https://lazydevapi.herokuapp.com/api/v1'
+//const url = 'http://localhost:8081/api/v1'
+ const url = 'https://lazydevapi.herokuapp.com/api/v1'
 
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = "*"
 axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
