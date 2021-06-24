@@ -2,11 +2,9 @@
   font-size: 16px;
 }
 
-html[data-theme=dark] {
+body[data-theme=dark] {
   scroll-behavior: smooth;
   background-color: #121212 !important;
-}
-html[data-theme=dark] body {
   background-color: transparent;
   color: #cfcfcf;
 }

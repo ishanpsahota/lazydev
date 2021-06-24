@@ -1,14 +1,14 @@
 @import 'variables';
 
-html[data-theme="dark"] {
+body[data-theme="dark"] {
 
     scroll-behavior: smooth;
     background-color: $black !important;    
 
-    body {
+    // body {
         background-color: transparent;
         color: $grey;
-    }
+    // }
 
 }
 

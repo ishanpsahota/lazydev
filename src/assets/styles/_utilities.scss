@@ -512,3 +512,15 @@
         transition: background-color 0.35s ease;
     }
 }
+
+.icon-stack {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+    svg {
+        margin: 0.1rem;
+    }
+}

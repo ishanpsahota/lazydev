@@ -33,6 +33,13 @@
 
                         </a>                        
                     </li>
+                    <li class="nav-item">
+                        <div class="icon-stack">
+                            <b-icon-sun :class="[theme == 'light' ? 'text-primary' : 'text-muted']" />
+                            <b-form-checkbox @change="changeTheme()" class="mx-auto pl-5 " name="theme" value="dark" unchecked-value="light" v-model="theme" switch />
+                            <b-icon-moon :class="[theme == 'dark' ? 'text-primary' : 'text-muted']" />
+                        </div>
+                    </li>
                     <li class="nav-item d-flex justify-content-center">
                         <!-- <a class="nav-link" href="#">Link</a> -->
                         <form action="/search" method="get" >                        
@@ -73,7 +80,8 @@ import { BIconGrid, BIconGridFill, BIconSearch,
         BIconPerson, BIconPencilSquare, BForm, 
         BFormGroup, BFormInput, BInputGroup,
         BInputGroupAppend, BIconCaretDown, BIconCaretDownFill,
-        BIconCaretLeft, BIconCaretLeftFill, BIconEmojiLaughing
+        BIconCaretLeft, BIconCaretLeftFill, BIconEmojiLaughing,
+        BFormCheckbox, BIconSun, BIconMoon
         } from 'bootstrap-vue'
 
 export default {
@@ -84,18 +92,29 @@ export default {
         BInputGroupAppend, BForm, BFormGroup, 
         BFormInput, BIconCaretDown, BIconCaretDownFill,
         BIconCaretLeft, BIconCaretLeftFill,
-        BIconEmojiLaughing
+        BIconEmojiLaughing, BFormCheckbox,
+        BIconSun, BIconMoon
     },
 
     data() {
         return {
             search_query: "",
-            nav_show: false
+            nav_show: false,
+            theme: this.$store.getters.getTheme
         }
     },
 
     methods: {       
 
+        changeTheme() {
+            
+            this.$store.dispatch('changeTheme', this.theme == 'dark' ? 'light' : 'dark' );
+        }
+
+    },
+
+    mounted() {
+        // console.log(document.body.getAttribute('data-theme'))
     }
 }
 </script>

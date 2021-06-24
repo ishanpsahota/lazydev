@@ -6,10 +6,10 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 
 var axios = require('axios'); // const url =  process.env.API_URL ? process.env.API_URL : 'http://localhost:8081/api/v1'
-// const url = 'http://localhost:8081/api/v1'
 
 
-var url = 'https://lazydevapi.herokuapp.com/api/v1';
+var url = 'http://localhost:8081/api/v1'; // const url = 'https://lazydevapi.herokuapp.com/api/v1'
+
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
 axios.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 var links = {

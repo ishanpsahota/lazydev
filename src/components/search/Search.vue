@@ -1,5 +1,5 @@
 <template>
-    <div class="row w-100 mx-0 p-3">
+    <div class="row w-100 mx-0 p-3 animation-fade-show">
         <div class="search-bar col-12 col-md-6 mx-auto">
             <!-- <form @submit.prevent="search()" class=""> -->
                 <b-form-group class="border border-purple rounded-pill p-2 ">

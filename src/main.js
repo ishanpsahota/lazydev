@@ -17,6 +17,7 @@ Vue.prototype.$http = axios;
 // Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Origin'] = "*"
 // Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
 
+// localStorage.setItem('theme', 'dark');
 
 Vue.config.productionTip = false
 

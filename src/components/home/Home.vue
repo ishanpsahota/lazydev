@@ -1,6 +1,6 @@
 <template>
   <section class="home full-view" id="home">
-    <div class="m-auto py-5 text-center col-12" v-if="loading">
+    <!-- <div class="m-auto py-5 text-center col-12" v-if="loading">
       <flower-spinner
           :animation-duration="2500"
           :size="70"
@@ -21,11 +21,9 @@
         <div v-if="error.new" class="alert alert-primary" role="alert">
           <strong>{{error.new}}</strong>
         </div> 
-      </div>
-      <div class="row w-100 mx-0 p-md-2 px-2">        
-        <blogs-item-with-intro :category="`music`" />        
-      </div>
-    </div>
+      </div> -->
+      
+    <!-- </div> -->
   </section>
 </template>
 
@@ -36,8 +34,7 @@ import BlogContainer from '../blogs-component/blog-container/BlogContainer'
 import SuggestionsPill from '../suggestions-pill/SuggestionsPill'
 import GlassDiv from '../glass-item/GlassDiv';
 import api from '../../api/index'
-import { BSpinner } from 'bootstrap-vue'
-import BlogsItemWithIntro from '../blogs-component/blogs-item-with-intro/BlogsItemWithIntro.vue'
+
 
 
 export default {
@@ -45,8 +42,8 @@ export default {
     components: {
       BlogContainer,
       SuggestionsPill,      
-      GlassDiv, BlogsItemWithIntro,
-      BSpinner, FlowerSpinner,
+      GlassDiv, 
+      FlowerSpinner,
       BlogContainer
     },
 

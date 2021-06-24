@@ -1,5 +1,5 @@
 <template>
-      <div class="row mx-0 p-1 p-md-3 blogs-create-wrapper w-100">                                    
+      <div class="row mx-0 p-1 p-md-3 animation-fade-show blogs-create-wrapper w-100">                                    
         <h1 class="display-4 mx-auto " v-if="!preview_mode" >
             New Blog 
         </h1>        

@@ -27,6 +27,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 // Import Bootstrap an BootstrapVue CSS files (order is important)
 _vue["default"].prototype.$http = _axios["default"]; // Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Origin'] = "*"
 // Vue.prototype.$http.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
+// localStorage.setItem('theme', 'dark');
 
 _vue["default"].config.productionTip = false;
 new _vue["default"]({

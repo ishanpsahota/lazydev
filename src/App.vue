@@ -2,8 +2,10 @@
   <div id="app" class="container-fluid root-wrapper">          
     <section class="app-wrapper">
       <Header />
-      <router-view/>     
-      <Footer />
+      <div class="animation-fade-show">
+        <router-view />     
+        <Footer />
+      </div>
     </section>    
   </div>
 </template>
