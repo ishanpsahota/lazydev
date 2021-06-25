@@ -1,6 +1,6 @@
 <template>
   <section class="home full-view" id="home">
-    <!-- <div class="m-auto py-5 text-center col-12" v-if="loading">
+    <div class="m-auto py-5 text-center col-12" v-if="loading">
       <flower-spinner
           :animation-duration="2500"
           :size="70"
@@ -21,9 +21,9 @@
         <div v-if="error.new" class="alert alert-primary" role="alert">
           <strong>{{error.new}}</strong>
         </div> 
-      </div> -->
+      </div>
       
-    <!-- </div> -->
+    </div>
   </section>
 </template>
 
