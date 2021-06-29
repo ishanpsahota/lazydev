@@ -8,6 +8,7 @@ import Search from '../views/search/SearchView.vue'
 import AdminView from '../views/admin/AdminView.vue'
 import DashboardView from '../views/admin/dashboard/DashboardView.vue'
 import AdminLogin from '../views/admin/login/Login.vue'
+import About from '../views/about/About.vue';
 import NotFound  from '../views/404/NotFound.vue'
 
 Vue.use(VueRouter)
@@ -26,6 +27,11 @@ const routes = [
     path: '/search',
     name: 'Search',
     component: Search
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
   },
   {
     path: '/blogs',    

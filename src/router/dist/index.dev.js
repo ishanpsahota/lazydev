@@ -23,6 +23,8 @@ var _DashboardView = _interopRequireDefault(require("../views/admin/dashboard/Da
 
 var _Login = _interopRequireDefault(require("../views/admin/login/Login.vue"));
 
+var _About = _interopRequireDefault(require("../views/about/About.vue"));
+
 var _NotFound = _interopRequireDefault(require("../views/404/NotFound.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -46,6 +48,10 @@ var routes = [{
   path: '/search',
   name: 'Search',
   component: _SearchView["default"]
+}, {
+  path: '/about',
+  name: 'About',
+  component: _About["default"]
 }, {
   path: '/blogs',
   component: _Blogs["default"],
